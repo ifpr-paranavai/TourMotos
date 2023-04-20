@@ -1,8 +1,9 @@
-package com.backend.model.entity;
+package com.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Rota implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6496510870570363104L;
 
     @Id

@@ -1,4 +1,4 @@
-package com.backend.model.dto;
+package com.backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MotoDTO {
+public class PontoInteresseDTO {
 
     private Long id;
 
-    private String modelo;
+    private String nome;
 
-    private String marca;
+    private String endereco;
+
+    private String tipo;
 
 }

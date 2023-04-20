@@ -1,6 +1,6 @@
-package com.backend.model.dto;
+package com.backend.dto;
 
-import com.backend.model.entity.Rota;
+import com.backend.entity.Rota;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

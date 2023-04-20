@@ -1,8 +1,9 @@
-package com.backend.model.entity;
+package com.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
@@ -12,8 +13,9 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class Parada implements Serializable {
+public class PontoInteresse implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6496510870570363104L;
 
     @Id
@@ -26,5 +28,8 @@ public class Parada implements Serializable {
 
     @Column(name = "endereco")
     private String endereco;
+
+    @Column(name = "tipo")
+    private String tipo;
 
 }

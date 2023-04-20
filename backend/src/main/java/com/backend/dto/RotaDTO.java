@@ -1,7 +1,7 @@
-package com.backend.model.dto;
+package com.backend.dto;
 
-import com.backend.model.entity.Parada;
-import com.backend.model.entity.PontoInteresse;
+import com.backend.entity.Parada;
+import com.backend.entity.PontoInteresse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

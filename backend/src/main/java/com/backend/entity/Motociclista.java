@@ -1,8 +1,9 @@
-package com.backend.model.entity;
+package com.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Motociclista implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6496510870570363104L;
 
     @Id
