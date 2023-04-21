@@ -1,4 +1,4 @@
 package com.backend.service.Parada;
 
-public class ParadaService {
+public interface ParadaService {
 }

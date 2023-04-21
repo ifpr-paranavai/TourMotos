@@ -3,19 +3,14 @@ package com.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serial;
-import java.io.Serializable;
-
-
 @Entity
 @Table(name = "motociclista")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class Motociclista implements Serializable {
+public class Motociclista {
 
-    @Serial
     private static final long serialVersionUID = 6496510870570363104L;
 
     @Id
@@ -32,7 +27,7 @@ public class Motociclista implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "senha")
+    @Column(name="senha")
     private String senha;
 
     @ManyToOne(fetch = FetchType.LAZY)

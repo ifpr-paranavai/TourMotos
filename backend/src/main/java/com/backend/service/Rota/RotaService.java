@@ -1,4 +1,4 @@
 package com.backend.service.Rota;
 
-public class RotaService {
+public interface RotaService {
 }
