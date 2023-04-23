@@ -1,4 +1,4 @@
-package com.backend.service.Moto;
+package com.backend.service.MotoTests;
 
 import com.backend.entity.Moto;
 import com.backend.exception.InfoException;

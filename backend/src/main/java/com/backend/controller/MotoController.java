@@ -2,7 +2,7 @@ package com.backend.controller;
 
 import com.backend.entity.Moto;
 import com.backend.exception.InfoException;
-import com.backend.service.Moto.MotoService;
+import com.backend.service.MotoTests.MotoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

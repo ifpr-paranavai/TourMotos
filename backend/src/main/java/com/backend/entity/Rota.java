@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "motociclista")
+@Table(name = "rota")
 @Builder
 @Data
 @NoArgsConstructor
@@ -35,10 +35,10 @@ public class Rota implements Serializable {
     private Timestamp tempoEstimado;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="parada")
+    @JoinColumn(name = "parada")
     private Parada parada;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="pontoInteresse")
+    @JoinColumn(name = "pontoInteresse")
     private PontoInteresse pontoInteresse;
 }

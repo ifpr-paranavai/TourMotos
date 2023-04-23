@@ -27,4 +27,6 @@ public class Moto implements Serializable {
     @Column(name = "marca")
     private String marca;
 
+    public Moto(String modelo, String marca) {
+    }
 }

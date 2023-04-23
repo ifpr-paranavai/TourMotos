@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RotaServiceImpl extends RotaService {
+public class RotaServiceImpl implements RotaService {
     @Autowired
     private RotaRepository rotaRepository;
 }

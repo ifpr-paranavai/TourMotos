@@ -1,10 +1,7 @@
 package com.backend.dto;
 
 import com.backend.entity.Rota;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Data
