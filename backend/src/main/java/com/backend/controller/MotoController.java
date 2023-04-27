@@ -23,12 +23,12 @@ public class MotoController {
     }
 
     @PostMapping("/cadastrar")
-    public Moto inserir(@RequestParam Moto moto) throws InfoException {
+    public Moto inserir(@RequestBody Moto moto) throws InfoException {
         return motoService.inserir(moto);
     }
 
     @PutMapping("/atualizar/{id}")
-    public Moto alterar(@PathVariable("id") Long id, @RequestParam Moto moto) throws InfoException {
+    public Moto alterar(@PathVariable("id") Long id, @RequestBody Moto moto) throws InfoException {
         return motoService.alterar(id, moto);
     }
 

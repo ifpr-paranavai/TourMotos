@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/motociclista")
 @RequiredArgsConstructor
@@ -18,12 +16,12 @@ public class MotociclistaController {
     private final MotociclistaService motociclistaService;
 
     @PostMapping("/cadastrar")
-    public Motociclista inserir(@RequestParam Motociclista motociclista) throws InfoException {
+    public Motociclista inserir(@RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.inserir(motociclista);
     }
 
     @PutMapping("/atualizar/{id}")
-    public Motociclista alterar(@PathVariable("id") Long id, @RequestParam Motociclista motociclista) throws InfoException {
+    public Motociclista alterar(@PathVariable("id") Long id, @RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.alterar(id, motociclista);
     }
 

@@ -2,9 +2,10 @@ package com.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 
 @Entity
@@ -31,8 +32,9 @@ public class Rota implements Serializable {
     @Column(name = "distancia")
     private Double distancia;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "tempoEstimado")
-    private Timestamp tempoEstimado;
+    private Date tempoEstimado;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parada")
