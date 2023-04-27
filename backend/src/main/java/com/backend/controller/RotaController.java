@@ -17,7 +17,7 @@ public class RotaController {
 
     private final RotaService rotaService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Rota> buscarTodos() {
         return rotaService.buscarTodos();
     }

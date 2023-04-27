@@ -17,7 +17,7 @@ public class PontoInteresseController {
 
     private final PontoInteresseService pontoInteresseService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<PontoInteresse> buscarTodos() {
         return pontoInteresseService.buscarTodos();
     }

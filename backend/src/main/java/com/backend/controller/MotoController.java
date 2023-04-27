@@ -17,7 +17,7 @@ public class MotoController {
 
     private final MotoService motoService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Moto> buscarTodos() {
         return motoService.buscarTodos();
     }

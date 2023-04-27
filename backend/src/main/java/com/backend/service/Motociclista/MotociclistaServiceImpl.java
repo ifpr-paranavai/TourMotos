@@ -1,21 +1,25 @@
 package com.backend.service.Motociclista;
 
 import com.backend.entity.Motociclista;
-import com.backend.entity.Rota;
 import com.backend.exception.InfoException;
 import com.backend.repository.MotociclistaRepository;
-import com.backend.repository.RotaRepository;
 import com.backend.utils.UtilsMotociclista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class MotociclistaServiceImpl implements MotociclistaService {
     @Autowired
     private MotociclistaRepository motociclistaRepository;
+
+    @Override
+    public List<Motociclista> buscarTodos() {
+        return motociclistaRepository.findAll();
+    }
 
     @Override
     public Motociclista inserir(Motociclista motociclista) throws InfoException {

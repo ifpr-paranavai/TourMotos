@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/motociclista")
 @RequiredArgsConstructor
@@ -14,6 +16,11 @@ import org.springframework.web.bind.annotation.*;
 public class MotociclistaController {
 
     private final MotociclistaService motociclistaService;
+
+    @GetMapping("/listar")
+    public List<Motociclista> buscarTodos() {
+        return motociclistaService.buscarTodos();
+    }
 
     @PostMapping("/cadastrar")
     public Motociclista inserir(@RequestBody Motociclista motociclista) throws InfoException {

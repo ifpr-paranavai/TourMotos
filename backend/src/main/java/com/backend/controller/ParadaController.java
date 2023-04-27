@@ -17,7 +17,7 @@ public class ParadaController {
 
     private final ParadaService paradaService;
     
-    @GetMapping
+    @GetMapping("/listar")
     public List<Parada> buscarTodos() {
         return paradaService.buscarTodos();
     }
