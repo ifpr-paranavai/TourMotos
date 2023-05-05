@@ -1,16 +1,14 @@
 package com.backend.service.GoogleMaps;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.Bounds;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
-public class GoogleMapsService {
+public interface GoogleMapsService {
 
-    @Value("${google.maps.apikey}")
-    private String apiKey;
-
-    public void searchPlaces() {
-        // Use a variável apiKey para fazer solicitações à API do Google Maps
-    }
+    Bounds coordenada() throws IOException, InterruptedException, ApiException;
 
 }
