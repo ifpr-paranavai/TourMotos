@@ -1,1 +1,11 @@
-<div id="map"></div>
+<div>
+    <google-map
+            (centerChanged)="center"
+            (zoomChanged)="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+    </google-map>
+
+    <div>Latitude: {{display?.lat}}</div>
+    <div>Longitude: {{display?.lng}}</div>
+</div>
