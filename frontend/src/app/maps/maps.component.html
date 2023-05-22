@@ -1,11 +1,19 @@
-<div>
-    <google-map
-            (centerChanged)="center"
-            (zoomChanged)="zoom"
-            (mapClick)="moveMap($event)"
-            (mapMousemove)="move($event)">
-    </google-map>
+<div class="main-content" id="map">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+            </div>
+            <div class="col-6" style="margin-bottom: 2%">
+                <google-map
+                        (centerChanged)="center"
+                        (zoomChanged)="zoom"
+                        (mapClick)="moveMap($event)"
+                        (mapMousemove)="move($event)">
+                </google-map>
 
-    <div>Latitude: {{display?.lat}}</div>
-    <div>Longitude: {{display?.lng}}</div>
+                <div>Latitude: {{display?.lat}}</div>
+                <div>Longitude: {{display?.lng}}</div>
+            </div>
+        </div>
+    </div>
 </div>

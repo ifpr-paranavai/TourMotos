@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'app-maps',
@@ -6,17 +6,23 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
-    constructor() {}
-    ngOnInit(): void {}
+    constructor() {
+    }
+
     display: any;
-    center: google.maps.LatLngLiteral = {
-        lat: 24,
-        lng: 12
-    };
     zoom = 4;
+    center: google.maps.LatLngLiteral = {
+        lat: -23.095579,
+        lng: -52.476640
+    };
+
+    ngOnInit(): void {
+    }
+
     moveMap(event: google.maps.MapMouseEvent) {
         if (event.latLng != null) this.center = (event.latLng.toJSON());
     }
+
     move(event: google.maps.MapMouseEvent) {
         if (event.latLng != null) this.display = event.latLng.toJSON();
     }
