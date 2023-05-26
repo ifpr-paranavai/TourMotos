@@ -7,12 +7,12 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { MapsComponent } from '../../maps/maps.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 import {MatRippleModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSelectModule} from '@angular/material/select';
+import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
+import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {GoogleMapsModule} from "@angular/google-maps";
 
 @NgModule({
