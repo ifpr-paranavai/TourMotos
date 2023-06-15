@@ -1,5 +1,5 @@
 # Documentação TourMotos
-<p>Este documento é um guia para ajudá-lo a iniciar o projeto. Ele fornecerá instruções passo a passo sobre como configurar seu ambiente de desenvolvimento.<\p>
+<p>Este documento é um guia para ajudá-lo a iniciar o projeto. Ele fornecerá instruções passo a passo sobre como configurar seu ambiente de desenvolvimento.</p>
 
 # Pré-requisitos
 <p>Antes de começar, certifique-se de ter o seguinte instalado em seu sistema:</p>
@@ -12,8 +12,8 @@
 </ul>
 
 # Front-end
-<p>O projeto front-end já possuirá todas as dependências necessárias para o projeto iniciar após possuir os pré-requisitos na lista acima./n
-Assim deverá seguir o comando abaixo depois do projeto ser instalado:/n
+<p>O projeto front-end já possuirá todas as dependências necessárias para o projeto iniciar após possuir os pré-requisitos na lista acima.<br/>
+Assim deverá seguir o comando abaixo depois do projeto ser instalado:<br/>
 </p>
 <pre>
 ``` 
