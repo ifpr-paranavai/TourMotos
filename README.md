@@ -27,7 +27,8 @@ Utilize o comando abaixo para iniciar o projeto:<br/>
 </p>
 <pre>
 ```ng serve ```
-</pre>  
+</pre> 
+
 # Back-end
 <p>
 No back-end do projeto você deve possuir alguma IDEA para que possa configurar o projeto, sendo assim deverá utilizar do comando clean lifecycle, que é feito a partir do objetivo do plugin clean:clean e que cuida da limpeza do projeto.
