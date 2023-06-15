@@ -5,7 +5,7 @@
 <p>Antes de começar, certifique-se de ter o seguinte instalado em seu sistema:<\p>
 <ul>
   <li>Possuir <a href=https://nodejs.org/en>Node.js</a> na versão <b>18.12.1</b></li>
-  <li>Possuir <a href=https://angular.io>Angular</a> na versão <b>16.0.2<\b></li>
+  <li>Possuir <a href=https://angular.io>Angular</a> na versão <b>16.0.2</b></li>
   <li>Possuir <a href=https://www.java.com/pt-BR>Java Development Kit(JDK)</a> na versão <b>18.0.2<\b></li>
   <li>Possuir <a href=https://maven.apache.org>Maven</a> na versão <b>4.0.0<\b></li>
   <li>Possuir <a href=https://spring.io/projects/spring-boot>Spring Boot</a> na versão <b>3.0.4<\b></li>
