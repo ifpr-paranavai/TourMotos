@@ -13,12 +13,10 @@
 
 # Front-end
 <p>O projeto front-end já possuirá todas as dependências necessárias para o projeto iniciar após possuir os pré-requisitos na lista acima.<br/>
-Assim deverá seguir o comando abaixo depois do projeto ser instalado:<br/>
+Utilize este comando para ativar todas as dependências no projeto:<br/>
 </p>
 <pre>
-``` 
-npm install 
-```
+```npm install ```
 </pre>  
 # Back-end
 <p></p>
