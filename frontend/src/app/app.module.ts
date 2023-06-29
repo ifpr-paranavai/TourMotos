@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {MapsComponent} from "./maps/maps.component";
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import {MapsComponent} from "./maps/maps.component";
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    GoogleMapsModule
   ],
   declarations: [
     AppComponent,

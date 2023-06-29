@@ -1,16 +1,15 @@
 <div class="main-content" id="map">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
-            </div>
-            <div class="col-6" style="margin-bottom: 2%">
-                <google-map
-                        (centerChanged)="center"
-                        (zoomChanged)="zoom"
-                        (mapClick)="moveMap($event)"
-                        (mapMousemove)="move($event)">
+            <div  style="margin-bottom: 2%;margin-left: 4.5%;align-content: center">
+                <google-map height="500px"
+                            width="990px"
+                            [center]="center"
+                            (centerChanged)="getCurrentLocation()"
+                            (mapClick)="moveMap($event)"
+                            (mapMousemove)="move($event)">
+                    <map-marker [position]="center"></map-marker>
                 </google-map>
-
                 <div>Latitude: {{display?.lat}}</div>
                 <div>Longitude: {{display?.lng}}</div>
             </div>
