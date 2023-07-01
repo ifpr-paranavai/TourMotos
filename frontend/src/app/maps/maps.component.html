@@ -6,9 +6,11 @@
                             width="990px"
                             [center]="center"
                             (centerChanged)="getCurrentLocation()"
-                            (mapClick)="moveMap($event)"
+                            (mapClick)="move($event); addMarker($event)"
                             (mapMousemove)="move($event)">
-                    <map-marker [position]="center"></map-marker>
+                    <map-marker *ngFor="let markerPosition of markerPositions"
+                                [options]="markerOptions"
+                                [position]="markerPosition"></map-marker>
                 </google-map>
                 <div>Latitude: {{display?.lat}}</div>
                 <div>Longitude: {{display?.lng}}</div>
