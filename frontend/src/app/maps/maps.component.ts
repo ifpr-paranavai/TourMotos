@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Location } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-maps',
@@ -7,58 +7,43 @@ import { Location } from '@angular/common';
     styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
-    @ViewChild('maps', { static: true }) mapElement: ElementRef;
-
     map: google.maps.Map;
-    latitude: number = 0;
-    longitude: number = 0;
-
-    constructor(private geolocation: Location) {}
-
-    display: any;
+    origin: string;
+    center: google.maps.LatLngLiteral;
     zoom = 18;
-    center: google.maps.LatLngLiteral = {
-        lat: 0,
-        lng: 0
-    };
-    markerOptions: google.maps.MarkerOptions = {
-        draggable: false
-    };
-    markerPositions: google.maps.LatLngLiteral[] = [];
+    addressData: any = [];
+    display: any;
+    request: any = {};
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+
+    constructor(private http: HttpClient) {
+    }
 
     ngOnInit(): void {
         this.getCurrentLocation();
+        this.initMap();
     }
 
-    move(event: google.maps.MapMouseEvent) {
-        if (event.latLng != null) this.display = event.latLng.toJSON();
-    }
-
-    addMarker(event: google.maps.MapMouseEvent) {
-        if (event.latLng != null) this.markerPositions.push(event.latLng.toJSON());
+    getAddressData(){
+        const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.center.lat},${this.center.lng}&key=AIzaSyDxKVH_v3Gte9zR-U8CJW3bg6Me9sOq9V8`;
+        this.http.get<any>(geocodingUrl).subscribe((response) => {
+            if (response.status === 'OK' && response.results.length > 0) {
+                this.addressData = response.results;
+                this.origin = this.addressData[0].formatted_address
+            }
+        });
     }
 
     getCurrentLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    this.latitude = position.coords.latitude;
-                    this.longitude = position.coords.longitude;
-                    this.center = { lat: this.latitude, lng: this.longitude };
-
-                    // Recarregue o mapa com as informações atuais
-                    this.map = new google.maps.Map(this.mapElement.nativeElement, {
-                        center: this.center,
-                        zoom: this.zoom
-                    });
-
-                    // Adicione um marcador para a localização atual
-                    new google.maps.Marker({
-                        position: this.center,
-                        map: this.map
-                    });
-
-                    console.log(this.center);
+                    this.center = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    this.getAddressData();
                 },
                 (error) => {
                     console.log('Erro ao obter localização:', error);
@@ -67,5 +52,42 @@ export class MapsComponent implements OnInit {
         } else {
             console.log('Geolocalização não é suportada neste navegador.');
         }
+    }
+
+    initMap() {
+        const mapOptions = {
+            center: this.center,
+            zoom: this.zoom,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        this.directionsRenderer.setMap(this.map);
+
+        const request = {
+            origin: this.origin,
+            destination: 'Maringá, PR',
+            travelMode: google.maps.TravelMode.DRIVING,
+            drivingOptions: {
+                departureTime: new Date(Date.now()),
+                trafficModel: google.maps.TrafficModel.OPTIMISTIC
+            },
+            provideRouteAlternatives: true,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            optimizeWaypoints: true,
+            waypoints: [
+                { location: 'Nova Esperança, PR' }
+            ],
+            region: 'BR'
+        };
+
+        this.directionsService.route(request, (response, status) => {
+            if (status === 'OK') {
+                this.directionsRenderer.setDirections(response);
+            } else {
+                console.log('Directions request failed due to ' + status);
+            }
+        });
     }
 }
