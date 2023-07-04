@@ -1,7 +1,35 @@
-<div class="main-content" id="map">
+<div class="main-content" style="padding-top: 5%">
     <div class="container-fluid">
         <div class="row">
-            <div style="margin-bottom: 2%; margin-left: 4.5%; align-content: center">
+            <div class="form-container">
+                <h2>Planejamento de Rotas</h2>
+                <form (ngSubmit)="submitForm()">
+                    <div class="form-group">
+                        <label for="start-point">Ponto de partida:</label>
+                        <input type="text" id="start-point" name="startPoint" [(ngModel)]="startPoint" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end-point">Ponto de chegada:</label>
+                        <input type="text" id="end-point" name="endPoint" [(ngModel)]="endPoint" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stops">Paradas:</label>
+                        <input type="text" id="stops" name="stops" [(ngModel)]="stops">
+                        <small>Insira os nomes das paradas separados por vírgula (,)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="points-of-interest">Pontos de interesse:</label>
+                        <input type="text" id="points-of-interest" name="pointsOfInterest" [(ngModel)]="pointsOfInterest">
+                        <small>Insira os nomes dos pontos de interesse separados por vírgula (,)</small>
+                    </div>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div id="map">
             </div>
         </div>
     </div>

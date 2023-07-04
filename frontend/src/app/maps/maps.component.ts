@@ -16,13 +16,16 @@ export class MapsComponent implements OnInit {
     request: any = {};
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
+    startPoint: string;
+    endPoint: string;
+    stops: string;
+    pointsOfInterest: string;
 
     constructor(private http: HttpClient) {
     }
 
     ngOnInit(): void {
         this.getCurrentLocation();
-        this.initMap();
     }
 
     getAddressData(){
@@ -31,6 +34,7 @@ export class MapsComponent implements OnInit {
             if (response.status === 'OK' && response.results.length > 0) {
                 this.addressData = response.results;
                 this.origin = this.addressData[0].formatted_address
+                this.initMap();
             }
         });
     }
@@ -89,5 +93,14 @@ export class MapsComponent implements OnInit {
                 console.log('Directions request failed due to ' + status);
             }
         });
+    }
+
+    submitForm() {
+        // Lógica para processar o formulário
+        console.log('Formulário enviado!');
+        console.log('Ponto de partida:', this.startPoint);
+        console.log('Ponto de chegada:', this.endPoint);
+        console.log('Paradas:', this.stops);
+        console.log('Pontos de interesse:', this.pointsOfInterest);
     }
 }
