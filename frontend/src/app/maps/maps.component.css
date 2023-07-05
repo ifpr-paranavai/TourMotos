@@ -1,21 +1,5 @@
-#map {
-    height: 460px;
-    width: 990px;
-    overflow: hidden;
-    align-content: center;
-    margin-bottom: 2%;
-    margin-left: 4.5%;
-}
-
-
-/* styles.css */
-.form-container {
-    width: 400px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
+::ng-deep .main-content{
+    overflow: hidden!important;
 }
 
 label {
@@ -39,7 +23,7 @@ small {
 button[type="submit"] {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #e53737;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -47,5 +31,45 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #da1405;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-container {
+    flex: 0 0 40%;
+    padding-right: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+#map {
+    height: 460px;
+    flex: 0 0 60%;
+    padding-left: 15px;
+}
+
+@media (max-width: 768px) {
+    .form-container, #map {
+        flex: 0 0 100%; /* Em telas menores, ocupam 100% da largura */
+        padding: 0;
+    }
 }

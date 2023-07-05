@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MapsComponent implements OnInit {
     map: google.maps.Map;
-    origin: string;
     center: google.maps.LatLngLiteral;
     zoom = 18;
     addressData: any = [];
@@ -19,6 +18,7 @@ export class MapsComponent implements OnInit {
     startPoint: string;
     endPoint: string;
     stops: string;
+    stopsList: [];
     pointsOfInterest: string;
 
     constructor(private http: HttpClient) {
@@ -33,7 +33,7 @@ export class MapsComponent implements OnInit {
         this.http.get<any>(geocodingUrl).subscribe((response) => {
             if (response.status === 'OK' && response.results.length > 0) {
                 this.addressData = response.results;
-                this.origin = this.addressData[0].formatted_address
+                this.startPoint = this.addressData[0].formatted_address
                 this.initMap();
             }
         });
@@ -69,20 +69,22 @@ export class MapsComponent implements OnInit {
 
         this.directionsRenderer.setMap(this.map);
 
+        if(this.stops == undefined || this.stops == ""){
+            this.stops = null;
+        }
+
         const request = {
-            origin: this.origin,
-            destination: 'Maringá, PR',
+            origin: this.startPoint,
+            destination: this.endPoint,
             travelMode: google.maps.TravelMode.DRIVING,
             drivingOptions: {
                 departureTime: new Date(Date.now()),
-                trafficModel: google.maps.TrafficModel.OPTIMISTIC
+                trafficModel: google.maps.TrafficModel.BEST_GUESS
             },
             provideRouteAlternatives: true,
             unitSystem: google.maps.UnitSystem.METRIC,
             optimizeWaypoints: true,
-            waypoints: [
-                { location: 'Nova Esperança, PR' }
-            ],
+            waypoints: this.stopsList,
             region: 'BR'
         };
 
@@ -95,12 +97,25 @@ export class MapsComponent implements OnInit {
         });
     }
 
+    criarObjetos(stringSeparadaPorVirgulas) {
+        const valores = stringSeparadaPorVirgulas.split(",");
+
+        this.stopsList = valores.map((valor) => {
+            return { location: valor.trim() };
+        });
+    }
+
+
     submitForm() {
-        // Lógica para processar o formulário
-        console.log('Formulário enviado!');
-        console.log('Ponto de partida:', this.startPoint);
-        console.log('Ponto de chegada:', this.endPoint);
-        console.log('Paradas:', this.stops);
-        console.log('Pontos de interesse:', this.pointsOfInterest);
+        if (this.startPoint) {
+            if(this.endPoint){
+                this.criarObjetos(this.stops);
+                this.initMap();
+            }else{
+                this.endPoint = '';
+            }
+        } else{
+            this.startPoint = '';
+        }
     }
 }
