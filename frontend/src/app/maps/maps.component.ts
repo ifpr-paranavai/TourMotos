@@ -79,7 +79,7 @@ export class MapsComponent implements OnInit {
             travelMode: google.maps.TravelMode.DRIVING,
             drivingOptions: {
                 departureTime: new Date(Date.now()),
-                trafficModel: google.maps.TrafficModel.BEST_GUESS
+                trafficModel: google.maps.TrafficModel.OPTIMISTIC
             },
             provideRouteAlternatives: true,
             unitSystem: google.maps.UnitSystem.METRIC,
