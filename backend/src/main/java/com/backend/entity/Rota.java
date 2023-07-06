@@ -32,10 +32,6 @@ public class Rota implements Serializable {
     @Column(name = "distancia")
     private Double distancia;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Column(name = "tempoEstimado")
-    private Date tempoEstimado;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parada")
     private Parada parada;

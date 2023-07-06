@@ -24,8 +24,6 @@ public class RotaDTO{
 
     private Double distancia;
 
-    private Timestamp tempoEstimado;
-
     private Parada parada;
 
     private PontoInteresse pontoInteresse;

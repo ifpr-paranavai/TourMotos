@@ -38,7 +38,6 @@ public class RotaServiceImpl implements RotaService {
                     .pontoDestino(rota.getPontoDestino() != null ? rota.getPontoDestino() : null)
                     .pontoPartida(rota.getPontoPartida() != null ? rota.getPontoPartida()  : null)
                     .pontoInteresse(rota.getPontoInteresse() != null ? rota.getPontoInteresse() : null)
-                    .tempoEstimado(rota.getTempoEstimado() != null ? rota.getTempoEstimado() : null)
                     .parada(rota.getParada() != null ? rota.getParada() : null)
                     .build();
 

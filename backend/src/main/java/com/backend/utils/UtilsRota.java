@@ -15,9 +15,6 @@ public class UtilsRota {
         if (rota.getPontoDestino() == null || rota.getPontoDestino().equals("")) {
             throw new InfoException("Ocorreu um erro ao cadastrar rota", HttpStatus.BAD_REQUEST);
         }
-        if (rota.getTempoEstimado() == null) {
-            throw new InfoException("Ocorreu um erro ao cadastrar rota", HttpStatus.BAD_REQUEST);
-        }
         return true;
     }
 }
