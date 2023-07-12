@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+declare var google: any; // Declaração para usar a biblioteca global do Google Maps
 
 @Component({
     selector: 'app-maps',
@@ -18,17 +20,16 @@ export class MapsComponent implements OnInit {
     startPoint: string;
     endPoint: string;
     stops: string;
-    stopsList: [];
+    stopsList: any[];
     pointsOfInterest: string;
 
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) {}
 
     ngOnInit(): void {
         this.getCurrentLocation();
     }
 
-    getAddressData(){
+    getAddressData() {
         const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.center.lat},${this.center.lng}&key=AIzaSyDxKVH_v3Gte9zR-U8CJW3bg6Me9sOq9V8`;
         this.http.get<any>(geocodingUrl).subscribe((response) => {
             if (response.status === 'OK' && response.results.length > 0) {
@@ -47,7 +48,7 @@ export class MapsComponent implements OnInit {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    this.getAddressData();
+                    this.initMap();
                 },
                 (error) => {
                     console.log('Erro ao obter localização:', error);
@@ -69,7 +70,7 @@ export class MapsComponent implements OnInit {
 
         this.directionsRenderer.setMap(this.map);
 
-        if(this.stops == undefined || this.stops == ""){
+        if (this.stops == undefined || this.stops == '') {
             this.stops = null;
         }
 
@@ -98,23 +99,22 @@ export class MapsComponent implements OnInit {
     }
 
     criarObjetos(stringSeparadaPorVirgulas) {
-        const valores = stringSeparadaPorVirgulas.split(",");
+        const valores = stringSeparadaPorVirgulas.split(',');
 
         this.stopsList = valores.map((valor) => {
             return { location: valor.trim() };
         });
     }
 
-
     submitForm() {
         if (this.startPoint) {
-            if(this.endPoint){
+            if (this.endPoint) {
                 this.criarObjetos(this.stops);
                 this.initMap();
-            }else{
+            } else {
                 this.endPoint = '';
             }
-        } else{
+        } else {
             this.startPoint = '';
         }
     }

@@ -2,6 +2,10 @@
     overflow: hidden!important;
 }
 
+::ng-deep .main-panel .main-content{
+    padding: 0 15px;
+}
+
 label {
     display: block;
     font-weight: bold;

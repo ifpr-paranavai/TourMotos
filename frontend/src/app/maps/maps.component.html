@@ -3,7 +3,7 @@
         <div class="row">
             <div class="form-container">
                 <h3>Planejamento de Rotas</h3>
-                <form (ngSubmit)="submitForm()">
+                <form (ngSubmit)="getAddressData()">
                     <div class="form-group">
                         <label for="start-point">Ponto de partida:</label>
                         <input type="text" id="start-point" name="startPoint" [(ngModel)]="startPoint" required>
