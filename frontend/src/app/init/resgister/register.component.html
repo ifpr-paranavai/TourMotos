@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div [hidden]="!login" class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Registration</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/register" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" placeholder="Name" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="cpf" placeholder="CPF" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="email" name="email" placeholder="Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="password" name="password" placeholder="Password" class="form-control">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger col-6">Register</button>
+                            <a type="submit" class="col-6" (click)="loginCadastro()" style="color: red">Login</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [hidden]="login" class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/login" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="email" name="email" placeholder="Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="password" name="password" placeholder="Password" class="form-control">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger col-6">Login</button>
+                            <a type="submit" class="col-6" (click)="loginCadastro()" style="color: red">Cadastre-se</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

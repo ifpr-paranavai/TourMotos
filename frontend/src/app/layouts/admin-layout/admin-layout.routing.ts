@@ -4,6 +4,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { MapsComponent } from '../../maps/maps.component';
+import {RegisterComponent} from "../../init/resgister/register.component";
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -15,7 +16,7 @@ export const AdminLayoutRoutes: Routes = [
     // path: '',
     // children: [ {
     //   path: 'userprofile',
-    //   component: UserProfileComponent
+    //   component: RegisterComponent
     // }]
     // }, {
     //   path: '',
@@ -52,4 +53,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'maps',           component: MapsComponent },
+    { path: 'register',       component: RegisterComponent },
 ];

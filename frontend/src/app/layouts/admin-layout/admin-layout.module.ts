@@ -15,6 +15,7 @@ import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/lega
 import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {GoogleMapsModule} from "@angular/google-maps";
 import {ComponentsModule} from "../../components/components.module";
+import {RegisterComponent} from "../../init/resgister/register.component";
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import {ComponentsModule} from "../../components/components.module";
     UserProfileComponent,
     TableListComponent,
     MapsComponent,
+    RegisterComponent,
   ]
 })
 
