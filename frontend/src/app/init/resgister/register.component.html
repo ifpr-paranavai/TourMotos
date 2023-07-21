@@ -26,8 +26,10 @@
                                     <input type="password" name="password" placeholder="Password" class="form-control">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger col-6">Register</button>
-                            <a type="submit" class="col-6" (click)="loginCadastro()" style="color: red">Login</a>
+                            <div class="row" style="justify-content: space-between">
+                                <button type="submit" class="btn btn-danger col-2 register">Register</button>
+                                <button type="submit" class="col-1 login-alternativo" (click)="loginCadastro()">Login</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -51,8 +53,10 @@
                                     <input type="password" name="password" placeholder="Password" class="form-control">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger col-6">Login</button>
-                            <a type="submit" class="col-6" (click)="loginCadastro()" style="color: red">Cadastre-se</a>
+                            <div class="row" style="justify-content: space-between">
+                                <button type="submit" class="btn btn-danger col-2 login">Login</button>
+                                <button type="submit" class="col-2 register-alternativo" (click)="loginCadastro()">Cadastre-se</button>
+                            </div>
                         </form>
                     </div>
                 </div>
