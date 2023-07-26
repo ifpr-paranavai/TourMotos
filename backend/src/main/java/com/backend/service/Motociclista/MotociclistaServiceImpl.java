@@ -29,14 +29,19 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     @Override
     public Motociclista inserir(Motociclista motociclista) throws InfoException {
         if (UtilsMotociclista.validarMotociclista(motociclista)) {
-            if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
-                motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));
-                return motociclistaRepository.save(motociclista);
+            if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {
+                if (UtilsMotociclista.validarCPF(motociclista.getCpf())) {
+                    if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
+                        motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));
+                        return motociclistaRepository.save(motociclista);
+                    }
+                    throw new InfoException("Usuário já cadastrado", HttpStatus.BAD_REQUEST);
+                }
+                throw new InfoException("CPF inválido", HttpStatus.BAD_REQUEST);
             }
-            throw new InfoException("Usuário já cadastrado", HttpStatus.BAD_REQUEST);
-        } else {
-            throw new InfoException("Ocorreu um erro ao cadastrar motociclista", HttpStatus.BAD_REQUEST);
+            throw new InfoException("E-mail inválido", HttpStatus.BAD_REQUEST);
         }
+        throw new InfoException("Ocorreu um erro ao cadastrar motociclista", HttpStatus.BAD_REQUEST);
     }
 
     @Override
