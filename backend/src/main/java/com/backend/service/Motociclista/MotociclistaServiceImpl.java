@@ -6,6 +6,7 @@ import com.backend.repository.MotociclistaRepository;
 import com.backend.utils.UtilsMotociclista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     @Autowired
     private MotociclistaRepository motociclistaRepository;
 
+    private BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     public List<Motociclista> buscarTodos() {
         return motociclistaRepository.findAll();
@@ -24,11 +29,14 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     @Override
     public Motociclista inserir(Motociclista motociclista) throws InfoException {
         if (UtilsMotociclista.validarMotociclista(motociclista)) {
-            return motociclistaRepository.save(motociclista);
+            if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
+                motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));
+                return motociclistaRepository.save(motociclista);
+            }
+            throw new InfoException("Usuário já cadastrado", HttpStatus.BAD_REQUEST);
         } else {
             throw new InfoException("Ocorreu um erro ao cadastrar motociclista", HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @Override
