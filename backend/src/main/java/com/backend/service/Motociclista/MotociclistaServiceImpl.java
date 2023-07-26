@@ -47,7 +47,6 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     @Override
     public Motociclista alterar(Long id, Motociclista motociclista) throws InfoException {
         Optional<Motociclista> motociclistaOptional = motociclistaRepository.findById(id);
-
         if (motociclistaOptional.isPresent()) {
             Motociclista motociclistaBuilder = Motociclista.builder()
                     .id(id)
@@ -57,13 +56,15 @@ public class MotociclistaServiceImpl implements MotociclistaService {
                     .senha(motociclista.getSenha() != null ? motociclista.getSenha() : null)
                     .rota(motociclista.getRota() != null ? motociclista.getRota() : null)
                     .build();
-
-            if (UtilsMotociclista.validarMotociclista(motociclistaBuilder)) {
-                motociclistaRepository.save(motociclistaBuilder);
+            if (UtilsMotociclista.validarEmail(motociclistaBuilder.getEmail())) {
+                if (UtilsMotociclista.validarMotociclista(motociclistaBuilder)) {
+                    motociclistaRepository.save(motociclistaBuilder);
+                    return motociclistaBuilder;
+                }
             }
-            return motociclistaBuilder;
+            throw new InfoException("E-mail inválido", HttpStatus.BAD_REQUEST);
         } else {
-            throw new InfoException("Motociclista não encontrada", HttpStatus.NOT_FOUND);
+            throw new InfoException("Motociclista não encontrado", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -74,7 +75,7 @@ public class MotociclistaServiceImpl implements MotociclistaService {
         if (motociclista.isPresent()) {
             motociclistaRepository.delete(motociclista.get());
         } else {
-            throw new InfoException("Motociclista não encontrada", HttpStatus.NOT_FOUND);
+            throw new InfoException("Motociclista não encontrado", HttpStatus.NOT_FOUND);
         }
     }
 }
