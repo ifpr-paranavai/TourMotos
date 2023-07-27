@@ -18,21 +18,25 @@ public class ParadaController {
     private final ParadaService paradaService;
     
     @GetMapping("/listar")
+    @CrossOrigin("http://localhost:4200")
     public List<Parada> buscarTodos() {
         return paradaService.buscarTodos();
     }
 
     @PostMapping("/cadastrar")
+    @CrossOrigin("http://localhost:4200")
     public Parada inserir(@RequestBody Parada parada) throws InfoException {
         return paradaService.inserir(parada);
     }
 
     @PutMapping("/atualizar/{id}")
+    @CrossOrigin("http://localhost:4200")
     public Parada alterar(@PathVariable("id") Long id, @RequestBody Parada parada) throws InfoException {
         return paradaService.alterar(id, parada);
     }
 
     @DeleteMapping("/deletar/{id}")
+    @CrossOrigin("http://localhost:4200")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) throws InfoException {
         paradaService.excluir(id);
         return ResponseEntity.ok().build();

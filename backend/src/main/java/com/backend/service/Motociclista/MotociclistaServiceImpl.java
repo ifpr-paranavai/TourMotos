@@ -45,16 +45,16 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     }
 
     @Override
-    public Motociclista alterar(Long id, Motociclista motociclista) throws InfoException {
+    public Motociclista alterar(Long id) throws InfoException {
         Optional<Motociclista> motociclistaOptional = motociclistaRepository.findById(id);
         if (motociclistaOptional.isPresent()) {
             Motociclista motociclistaBuilder = Motociclista.builder()
                     .id(id)
-                    .nome(motociclista.getNome() != null ? motociclista.getNome() : null)
-                    .email(motociclista.getEmail() != null ? motociclista.getEmail() : null)
-                    .cpf(motociclista.getCpf() != null ? motociclista.getCpf() : null)
-                    .senha(motociclista.getSenha() != null ? motociclista.getSenha() : null)
-                    .rota(motociclista.getRota() != null ? motociclista.getRota() : null)
+                    .nome(motociclistaOptional.get().getNome() != null ? motociclistaOptional.get().getNome() : null)
+                    .email(motociclistaOptional.get().getEmail() != null ? motociclistaOptional.get().getEmail() : null)
+                    .cpf(motociclistaOptional.get().getCpf() != null ? motociclistaOptional.get().getCpf() : null)
+                    .senha(motociclistaOptional.get().getSenha() != null ? motociclistaOptional.get().getSenha() : null)
+                    .rota(motociclistaOptional.get().getRota() != null ? motociclistaOptional.get().getRota() : null)
                     .build();
             if (UtilsMotociclista.validarEmail(motociclistaBuilder.getEmail())) {
                 if (UtilsMotociclista.validarMotociclista(motociclistaBuilder)) {

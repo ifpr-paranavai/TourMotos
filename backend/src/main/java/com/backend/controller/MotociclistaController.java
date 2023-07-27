@@ -18,21 +18,25 @@ public class MotociclistaController {
     private final MotociclistaService motociclistaService;
 
     @GetMapping("/listar")
+    @CrossOrigin("http://localhost:4200")
     public List<Motociclista> buscarTodos() {
         return motociclistaService.buscarTodos();
     }
 
     @PostMapping("/cadastrar")
+    @CrossOrigin("http://localhost:4200")
     public Motociclista inserir(@RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.inserir(motociclista);
     }
 
     @PutMapping("/atualizar/{id}")
-    public Motociclista alterar(@PathVariable("id") Long id, @RequestBody Motociclista motociclista) throws InfoException {
-        return motociclistaService.alterar(id, motociclista);
+    @CrossOrigin("http://localhost:4200")
+    public Motociclista alterar(@PathVariable("id") Long id) throws InfoException {
+        return motociclistaService.alterar(id);
     }
 
     @DeleteMapping("/deletar/{id}")
+    @CrossOrigin("http://localhost:4200")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) throws InfoException {
         motociclistaService.excluir(id);
         return ResponseEntity.ok().build();

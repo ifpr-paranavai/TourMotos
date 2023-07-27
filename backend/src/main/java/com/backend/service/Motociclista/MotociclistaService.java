@@ -11,7 +11,7 @@ public interface MotociclistaService {
 
     Motociclista inserir(Motociclista motociclista) throws InfoException;
 
-    Motociclista alterar(Long id, Motociclista motociclista) throws InfoException;
+    Motociclista alterar(Long id) throws InfoException;
 
     void excluir(Long id) throws InfoException;
 }
