@@ -31,8 +31,8 @@ public class MotociclistaController {
 
     @PutMapping("/atualizar/{id}")
     @CrossOrigin("http://localhost:4200")
-    public Motociclista alterar(@PathVariable("id") Long id) throws InfoException {
-        return motociclistaService.alterar(id);
+    public Motociclista alterar(@PathVariable("id") Long id,@RequestBody Motociclista motociclista) throws InfoException {
+        return motociclistaService.alterar(id,motociclista);
     }
 
     @DeleteMapping("/deletar/{id}")

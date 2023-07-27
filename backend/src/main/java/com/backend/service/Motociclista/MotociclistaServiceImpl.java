@@ -45,28 +45,22 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     }
 
     @Override
-    public Motociclista alterar(Long id) throws InfoException {
+    public Motociclista alterar(Long id, Motociclista motociclista) throws InfoException {
         Optional<Motociclista> motociclistaOptional = motociclistaRepository.findById(id);
         if (motociclistaOptional.isPresent()) {
-            Motociclista motociclistaBuilder = Motociclista.builder()
-                    .id(id)
-                    .nome(motociclistaOptional.get().getNome() != null ? motociclistaOptional.get().getNome() : null)
-                    .email(motociclistaOptional.get().getEmail() != null ? motociclistaOptional.get().getEmail() : null)
-                    .cpf(motociclistaOptional.get().getCpf() != null ? motociclistaOptional.get().getCpf() : null)
-                    .senha(motociclistaOptional.get().getSenha() != null ? motociclistaOptional.get().getSenha() : null)
-                    .rota(motociclistaOptional.get().getRota() != null ? motociclistaOptional.get().getRota() : null)
-                    .build();
-            if (UtilsMotociclista.validarEmail(motociclistaBuilder.getEmail())) {
-                if (UtilsMotociclista.validarMotociclista(motociclistaBuilder)) {
-                    motociclistaRepository.save(motociclistaBuilder);
-                    return motociclistaBuilder;
-                }
+            if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {
+                motociclistaOptional.get().setNome(motociclista.getNome());
+                motociclistaOptional.get().setEmail(motociclista.getEmail());
+                motociclistaRepository.save(motociclistaOptional.get());
+                return motociclistaOptional.get();
+            } else {
+                throw new InfoException("E-mail inválido", HttpStatus.BAD_REQUEST);
             }
-            throw new InfoException("E-mail inválido", HttpStatus.BAD_REQUEST);
         } else {
             throw new InfoException("Motociclista não encontrado", HttpStatus.NOT_FOUND);
         }
     }
+
 
     @Override
     public void excluir(Long id) throws InfoException {
