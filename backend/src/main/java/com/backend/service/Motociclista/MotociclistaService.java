@@ -14,4 +14,6 @@ public interface MotociclistaService {
     Motociclista alterar(Long id, Motociclista motociclista) throws InfoException;
 
     void excluir(Long id) throws InfoException;
+
+    Motociclista buscaPerfil(Long id) throws InfoException;
 }

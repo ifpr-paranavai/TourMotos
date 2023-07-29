@@ -12,12 +12,15 @@ export class RegisterService {
     constructor(private http: HttpClient) { }
 
     cadastrarMotociclista(dados: Motociclista): Observable<Motociclista> {
-        return this.http.post<Motociclista>(`${this.baseUrl}/cadastrar`, dados);
+        return this.http.post<Motociclista>(`${this.baseUrl}/inserir`, dados);
     }
 
-    editarMotociclista(dados: Motociclista): Observable<Motociclista> {
-        return this.http.post<Motociclista>(`${this.baseUrl}/cadastrar/${dados.id}`, dados);
+    logarMotociclista(dados: Motociclista): Observable<Motociclista>{
+        return this.http.post<Motociclista>(`${this.baseUrl}/login`, dados);
     }
 
+    logoutMotociclista(): Observable<Motociclista>{
+        return this.http.post<Motociclista>(`${this.baseUrl}/logout`, this);
+    }
 
 }

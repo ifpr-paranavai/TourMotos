@@ -17,13 +17,23 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     @Autowired
     private MotociclistaRepository motociclistaRepository;
 
-    private BCryptPasswordEncoder passwordEncoder(){
+    private BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     public List<Motociclista> buscarTodos() {
         return motociclistaRepository.findAll();
+    }
+
+    @Override
+    public Motociclista buscaPerfil(Long id) throws InfoException {
+        Optional<Motociclista> motociclistaOptional = motociclistaRepository.findById(id);
+        if (motociclistaOptional.isPresent()) {
+            return motociclistaOptional.get();
+        } else {
+            throw new InfoException("Motociclista não encontrado", HttpStatus.NOT_FOUND);
+        }
     }
 
     @Override

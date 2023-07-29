@@ -23,13 +23,19 @@ public class MotociclistaController {
         return motociclistaService.buscarTodos();
     }
 
+    @GetMapping("/buscaPerfil/{id}")
+    @CrossOrigin("http://localhost:4200")
+    public Motociclista buscaPerfil(@PathVariable("id") Long id) throws InfoException {
+        return motociclistaService.buscaPerfil(id);
+    }
+
     @PostMapping("/cadastrar")
     @CrossOrigin("http://localhost:4200")
     public Motociclista inserir(@RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.inserir(motociclista);
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/alterar/{id}")
     @CrossOrigin("http://localhost:4200")
     public Motociclista alterar(@PathVariable("id") Long id,@RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.alterar(id,motociclista);

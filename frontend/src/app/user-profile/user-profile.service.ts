@@ -16,8 +16,11 @@ export class UserProfileService {
     }
 
     editarMotociclista(dados: Motociclista): Observable<Motociclista> {
-        return this.http.post<Motociclista>(`${this.baseUrl}/cadastrar/${dados.id}`, dados);
+        return this.http.post<Motociclista>(`${this.baseUrl}/alterar/${dados.id}`, dados);
     }
 
+    buscaMotociclista(id: number): Observable<Motociclista> {
+        return this.http.post<Motociclista>(`${this.baseUrl}/buscaPerfil/${id}`, id);
+    }
 
 }
