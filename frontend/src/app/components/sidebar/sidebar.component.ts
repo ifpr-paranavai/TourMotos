@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/user-profile', title: 'Perfil de Usuário',  icon:'person', class: '' },
     { path: '/table-list', title: 'Histórico de Rotas',  icon:'content_paste', class: '' },
-    { path: '/maps', title: 'Mapa',  icon:'location_on', class: '' },
+    { path: '/maps', title: 'Mapa',  icon:'location_on', class: '' }
 ];
 
 @Component({
@@ -27,6 +27,14 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
+
+  resgisterPage(){
+      if(window.location.href=='http://localhost:4200/#/register'){
+          return false
+      }
+      return true
+  }
+
   isMobileMenu() {
       if ($(window).width() > 991) {
           return false;
