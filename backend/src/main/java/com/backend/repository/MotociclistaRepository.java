@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface MotociclistaRepository extends JpaRepository<Motociclista, Long> {
     List<Motociclista> findByCpf(String cpf);
+
+    Motociclista findMotociclistaByEmailAndSenha(String email, String senha);
 }

@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div [hidden]="!login" class="row">
+        <div *ngIf="register" class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
@@ -10,32 +10,32 @@
                         <form action="/register" method="post">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" name="name" placeholder="Name" class="form-control">
+                                    <input type="text" name="name" placeholder="Name" [(ngModel)]="motociclista.nome" class="form-control">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" name="cpf" placeholder="CPF" class="form-control">
+                                    <input type="text" name="cpf" placeholder="CPF" [(ngModel)]="motociclista.cpf" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="email" name="email" placeholder="Email" class="form-control">
+                                    <input type="email" name="email" placeholder="Email" [(ngModel)]="motociclista.email" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="password" name="password" placeholder="Password" class="form-control">
+                                    <input type="password" name="password" placeholder="Password" [(ngModel)]="motociclista.senha" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="justify-content: space-between">
-                                <button type="submit" class="btn btn-danger col-2 register">Register</button>
-                                <button type="submit" class="col-1 login-alternativo" (click)="loginCadastro()">Login</button>
+                                <button type="button" class="btn btn-danger col-2 register" (click)="inserirMotociclista(motociclista)">Register</button>
+                                <button type="button" class="col-1 login-alternativo" (click)="loginCadastro()">Login</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div [hidden]="login" class="row">
+        <div *ngIf="!register" class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
@@ -54,8 +54,8 @@
                                 </div>
                             </div>
                             <div class="row" style="justify-content: space-between">
-                                <button type="submit" class="btn btn-danger col-2 login">Login</button>
-                                <button type="submit" class="col-2 register-alternativo" (click)="loginCadastro()">Cadastre-se</button>
+                                <button type="button" class="btn btn-danger col-2 login">Login</button>
+                                <button type="button" class="col-2 register-alternativo" (click)="loginCadastro()">Cadastre-se</button>
                             </div>
                         </form>
                     </div>

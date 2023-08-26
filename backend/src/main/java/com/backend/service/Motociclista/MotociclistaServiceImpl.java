@@ -37,6 +37,16 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     }
 
     @Override
+    public Boolean buscaPerfilComLogin(String email, String senha) throws InfoException {
+        Optional<Motociclista> motociclistaOptional = Optional.ofNullable(motociclistaRepository.findMotociclistaByEmailAndSenha(email, senha));
+        if (motociclistaOptional.isPresent()) {
+            return true;
+        } else {
+            throw new InfoException("Motociclista não encontrado: " + motociclistaOptional.get().getNome(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
     public Motociclista inserir(Motociclista motociclista) throws InfoException {
         if (UtilsMotociclista.validarMotociclista(motociclista)) {
             if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {

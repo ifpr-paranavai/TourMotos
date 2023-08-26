@@ -12,37 +12,36 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/motociclista")
 @RequiredArgsConstructor
-@CrossOrigin()
 public class MotociclistaController {
 
     private final MotociclistaService motociclistaService;
 
-    @GetMapping("/listar")
     @CrossOrigin("http://localhost:4200")
+    @GetMapping("/listar")
     public List<Motociclista> buscarTodos() {
         return motociclistaService.buscarTodos();
     }
 
-    @GetMapping("/buscaPerfil/{id}")
     @CrossOrigin("http://localhost:4200")
+    @GetMapping("/buscaPerfil/{id}")
     public Motociclista buscaPerfil(@PathVariable("id") Long id) throws InfoException {
         return motociclistaService.buscaPerfil(id);
     }
 
-    @PostMapping("/cadastrar")
     @CrossOrigin("http://localhost:4200")
+    @PostMapping("/cadastrar")
     public Motociclista inserir(@RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.inserir(motociclista);
     }
 
-    @PutMapping("/alterar/{id}")
     @CrossOrigin("http://localhost:4200")
+    @PutMapping("/alterar/{id}")
     public Motociclista alterar(@PathVariable("id") Long id,@RequestBody Motociclista motociclista) throws InfoException {
         return motociclistaService.alterar(id,motociclista);
     }
 
-    @DeleteMapping("/deletar/{id}")
     @CrossOrigin("http://localhost:4200")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) throws InfoException {
         motociclistaService.excluir(id);
         return ResponseEntity.ok().build();

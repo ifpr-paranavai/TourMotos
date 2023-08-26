@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
+import axios from "axios";
+
 
 @Injectable({
     providedIn: 'root'
@@ -11,16 +13,7 @@ export class RegisterService {
 
     constructor(private http: HttpClient) { }
 
-    cadastrarMotociclista(dados: Motociclista): Observable<Motociclista> {
-        return this.http.post<Motociclista>(`${this.baseUrl}/inserir`, dados);
+    cadastrarMotociclista(dados: Motociclista){
+        return axios.post(`${this.baseUrl}/cadastrar`, dados);
     }
-
-    logarMotociclista(dados: Motociclista): Observable<Motociclista>{
-        return this.http.post<Motociclista>(`${this.baseUrl}/login`, dados);
-    }
-
-    logoutMotociclista(): Observable<Motociclista>{
-        return this.http.post<Motociclista>(`${this.baseUrl}/logout`, this);
-    }
-
 }

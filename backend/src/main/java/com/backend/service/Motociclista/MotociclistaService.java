@@ -5,9 +5,11 @@ import com.backend.exception.InfoException;
 
 import java.util.List;
 
-public interface MotociclistaService {
+public interface MotociclistaService{
 
     List<Motociclista> buscarTodos();
+
+    Boolean buscaPerfilComLogin(String email, String senha) throws InfoException;
 
     Motociclista inserir(Motociclista motociclista) throws InfoException;
 
