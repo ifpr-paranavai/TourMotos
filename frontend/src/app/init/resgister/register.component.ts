@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { RegisterService } from './register.service';
+import {Component, OnInit} from '@angular/core';
+import {RegisterService} from './register.service';
+import {SessionStorage} from "../../../SessionStorage";
 
 @Component({
-    selector: 'app-user-profile',
+    selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
@@ -10,13 +11,13 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
 
     motociclista: Motociclista;
-    register: boolean;
+    url: string
 
     constructor(private registerService: RegisterService) {
     }
 
     ngOnInit() {
-        this.register = true;
+        this.url = 'http://localhost:4200/#/login';
         this.motociclista = {
             id: null,
             nome: '',
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
     }
 
     loginCadastro(): void {
-        this.register = !this.register;
+        window.location.replace(this.url);
     }
 
     inserirMotociclista(motociclista: Motociclista) {
@@ -38,7 +39,7 @@ export class RegisterComponent implements OnInit {
                 motociclista.cpf &&
                 motociclista.senha) {
                 this.registerService.cadastrarMotociclista(motociclista);
-                this.register = true;
+                this.loginCadastro();
             }
         } catch (e) {
             console.error(e);

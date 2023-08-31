@@ -4,12 +4,13 @@ import com.backend.entity.Motociclista;
 import com.backend.exception.InfoException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MotociclistaService{
 
     List<Motociclista> buscarTodos();
 
-    Boolean buscaPerfilComLogin(String email, String senha) throws InfoException;
+    Optional<Motociclista> buscaPerfilComLogin(String email, String senha) throws InfoException;
 
     Motociclista inserir(Motociclista motociclista) throws InfoException;
 

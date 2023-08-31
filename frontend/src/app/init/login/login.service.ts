@@ -7,13 +7,13 @@ import axios from "axios";
 @Injectable({
     providedIn: 'root'
 })
-export class RegisterService {
+export class LoginService {
 
     private baseUrl = 'http://localhost:8080/api/motociclista';
 
     constructor() { }
 
-    cadastrarMotociclista(dados: Motociclista){
-        return axios.post(`${this.baseUrl}/cadastrar`, dados);
+    verificaMotociclista(dados: Motociclista){
+        return axios.get(`${this.baseUrl}/buscaPerfilComLogin?email=${dados.email}&senha=${dados.senha}`);
     }
 }

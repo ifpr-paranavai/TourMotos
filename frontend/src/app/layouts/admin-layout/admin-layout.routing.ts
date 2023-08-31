@@ -5,6 +5,7 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { TableListComponent } from '../../table-list/table-list.component';
 import { MapsComponent } from '../../maps/maps.component';
 import {RegisterComponent} from "../../init/resgister/register.component";
+import {LoginComponent} from "../../init/login/login.component";
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -16,7 +17,7 @@ export const AdminLayoutRoutes: Routes = [
     // path: '',
     // children: [ {
     //   path: 'userprofile',
-    //   component: RegisterComponent
+    //   component: LoginComponent
     // }]
     // }, {
     //   path: '',
@@ -54,4 +55,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table-list',     component: TableListComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'register',       component: RegisterComponent },
+    { path: 'login',       component: LoginComponent },
 ];
