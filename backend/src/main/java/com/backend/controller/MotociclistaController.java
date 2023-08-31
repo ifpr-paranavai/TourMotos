@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/motociclista")
@@ -31,7 +30,7 @@ public class MotociclistaController {
 
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/buscaPerfilComLogin")
-    public Optional<Motociclista> buscaPerfilComLogin(@RequestParam String email, @RequestParam String senha ) throws InfoException {
+    public List<Motociclista> buscaPerfilComLogin(@RequestParam String email, @RequestParam String senha ) throws InfoException {
         return motociclistaService.buscaPerfilComLogin(email,senha);
     }
 

@@ -37,13 +37,16 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     }
 
     @Override
-    public Optional<Motociclista> buscaPerfilComLogin(String email, String senha) throws InfoException {
-        senha = passwordEncoder().encode(senha);
-        Optional<Motociclista> motociclistaOptional = Optional.ofNullable(motociclistaRepository.findMotociclistaByEmailAndSenha(email, senha));
-        if (motociclistaOptional.isPresent()) {
-            return motociclistaOptional;
-        } else {
-            throw new InfoException("Motociclista não encontrado: " + motociclistaOptional.get().getNome(), HttpStatus.NOT_FOUND);
+    public List<Motociclista> buscaPerfilComLogin(String email, String senha) throws InfoException {
+        List<Motociclista> motociclistaOptional = motociclistaRepository.findMotociclistaByEmail(email);
+        if (passwordEncoder().matches(senha, motociclistaOptional.get(0).getSenha())) {
+            if (!motociclistaOptional.isEmpty()) {
+                return motociclistaOptional;
+            } else {
+                throw new InfoException("Motociclista não encontrado: " + motociclistaOptional.get(0).getNome(), HttpStatus.NOT_FOUND);
+            }
+        }else{
+            throw new InfoException("Senha incorreta", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -51,14 +54,17 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     public Motociclista inserir(Motociclista motociclista) throws InfoException {
         if (UtilsMotociclista.validarMotociclista(motociclista)) {
             if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {
-                if (UtilsMotociclista.validarCPF(motociclista.getCpf())) {
-                    if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
-                        motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));
-                        return motociclistaRepository.save(motociclista);
+                if (motociclistaRepository.findMotociclistaByEmail(motociclista.getEmail()).isEmpty()) {
+                    if (UtilsMotociclista.validarCPF(motociclista.getCpf())) {
+                        if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
+                            motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));
+                            return motociclistaRepository.save(motociclista);
+                        }
+                        throw new InfoException("Usuário já cadastrado", HttpStatus.BAD_REQUEST);
                     }
-                    throw new InfoException("Usuário já cadastrado", HttpStatus.BAD_REQUEST);
+                    throw new InfoException("CPF inválido", HttpStatus.BAD_REQUEST);
                 }
-                throw new InfoException("CPF inválido", HttpStatus.BAD_REQUEST);
+                throw new InfoException("Usuário já cadastrado", HttpStatus.BAD_REQUEST);
             }
             throw new InfoException("E-mail inválido", HttpStatus.BAD_REQUEST);
         }

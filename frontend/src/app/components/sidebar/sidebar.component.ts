@@ -29,7 +29,9 @@ export class SidebarComponent implements OnInit {
   }
 
   resgisterPage(){
-      if(window.location.href=='http://localhost:4200/#/register'){
+      if(window.location.href=='http://localhost:4200/#/register' ||
+          window.location.href=='http://localhost:4200/#/login'
+      ){
           return false
       }
       return true
