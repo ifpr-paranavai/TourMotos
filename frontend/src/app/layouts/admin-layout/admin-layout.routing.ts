@@ -56,4 +56,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'register',       component: RegisterComponent },
     { path: 'login',       component: LoginComponent },
+    { path: 'logout',       component: RegisterComponent },
 ];
