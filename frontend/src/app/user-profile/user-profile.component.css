@@ -1,7 +1,9 @@
 #label{
     color: black;
 }
-#input{
-    border: solid 1px grey;
-    border-radius: 5px;
+.input{
+    margin-left: 5px;
+    border: none;
+    border-bottom: solid 1px;
+    width: 200px;
 }

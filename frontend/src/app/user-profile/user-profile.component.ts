@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserProfileService} from "./user-profile.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user-profile',
@@ -12,11 +13,14 @@ export class UserProfileComponent implements OnInit {
   constructor(private userProfileService: UserProfileService) {}
 
   ngOnInit() {
-   // this.buscarPerfil(id);
+    this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
+    this.motociclista = this.motociclista[0];
+    this.buscarPerfil( this.motociclista.id);
   }
 
   buscarPerfil(id: number){
     this.userProfileService.buscaMotociclista(id);
+
   }
 
   cadastrar(motociclista: Motociclista){
@@ -24,7 +28,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   editar(motociclista: Motociclista){
-    if(motociclista.nome != this.motociclista.nome && motociclista.email != this.motociclista.email) {
+    if(motociclista) {
       this.userProfileService.editarMotociclista(motociclista);
     }
   }

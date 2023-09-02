@@ -7,31 +7,43 @@
                         <h4 class="card-title">Editar Perfil</h4>
                     </div>
                     <div class="card-body">
-                        <form>
                             <div class="row d-flex justify-content-between">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <label id="label">Nome:</label>
-                                        <input matInput type="text" id="input" placeholder="Digite seu nome" [(ngModel)]="motociclista.nome">
-                                    </mat-form-field>
+
+                                <div class="col">
+                                    <label id="label">Nome:</label>
+                                    <input matInput
+                                           type="text"
+                                           class="input"
+                                           placeholder="Digite seu nome"
+                                           [(ngModel)]="motociclista.nome">
                                 </div>
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <label id="label">E-mail:</label>
-                                        <input matInput type="text" id="input" placeholder="Digite seu e-mail" [(ngModel)]="motociclista.email">
-                                    </mat-form-field>
+
+
+                                <div class="col">
+                                    <label id="label">E-mail:</label>
+                                    <input matInput
+                                           type="text"
+                                           class="input"
+                                           placeholder="Digite seu e-mail"
+                                           [(ngModel)]="motociclista.email">
+
                                 </div>
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <label id="label">CPF:</label>
-                                        <input matInput id="input" placeholder="" [(ngModel)]="motociclista.email" disabled>
-                                    </mat-form-field>
+
+                                <div class="col">
+                                    <label id="label">CPF:</label>
+                                    <input matInput
+                                           lass="input"
+                                           placeholder=""
+                                           [(ngModel)] ="motociclista.cpf" disabled>
                                 </div>
+
                             </div>
 
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" id="updateProfileBtn" (click)="editar(this.motociclista)">Salvar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                    id="updateProfileBtn" (click)="editar(this.motociclista)">Editar
+                            </button>
                             <div class="clearfix"></div>
-                        </form>
+
                     </div>
                 </div>
             </div>
