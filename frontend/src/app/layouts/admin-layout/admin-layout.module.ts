@@ -17,6 +17,7 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import {ComponentsModule} from "../../components/components.module";
 import {RegisterComponent} from "../../init/resgister/register.component";
 import {LoginComponent} from "../../init/login/login.component";
+import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import {LoginComponent} from "../../init/login/login.component";
         MapsComponent,
         RegisterComponent,
         LoginComponent,
+        MotorcycleComponent,
     ]
 })
 

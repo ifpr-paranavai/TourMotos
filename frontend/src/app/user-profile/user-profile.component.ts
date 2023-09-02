@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {UserProfileService} from "./user-profile.service";
 import {Observable} from "rxjs";
+import {SessionStorage} from "../../SessionStorage";
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent extends SessionStorage implements OnInit{
 
   motociclista: Motociclista;
-  constructor(private userProfileService: UserProfileService) {}
+  constructor(private userProfileService: UserProfileService) {
+    super();
+  }
 
   ngOnInit() {
     this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
     this.motociclista = this.motociclista[0];
-    this.buscarPerfil( this.motociclista.id);
   }
 
   buscarPerfil(id: number){
@@ -29,7 +31,9 @@ export class UserProfileComponent implements OnInit {
 
   editar(motociclista: Motociclista){
     if(motociclista) {
-      this.userProfileService.editarMotociclista(motociclista);
+      this.userProfileService.editarMotociclista(motociclista).then(value => {
+        this.session(value.data);
+      });
     }
   }
 

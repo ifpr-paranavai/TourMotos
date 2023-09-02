@@ -6,6 +6,7 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { MapsComponent } from '../../maps/maps.component';
 import {RegisterComponent} from "../../init/resgister/register.component";
 import {LoginComponent} from "../../init/login/login.component";
+import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,4 +58,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'register',       component: RegisterComponent },
     { path: 'login',       component: LoginComponent },
     { path: 'logout',       component: RegisterComponent },
+    { path: 'motorcycle',       component: MotorcycleComponent },
 ];
