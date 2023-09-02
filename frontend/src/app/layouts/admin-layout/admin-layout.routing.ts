@@ -17,7 +17,7 @@ export const AdminLayoutRoutes: Routes = [
     // path: '',
     // children: [ {
     //   path: 'userprofile',
-    //   component: LoginComponent
+    //   component: MotorcycleComponent
     // }]
     // }, {
     //   path: '',

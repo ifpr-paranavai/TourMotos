@@ -5,4 +5,5 @@ class Motociclista {
     email: string;
     senha: string;
     rota?: Rota[];
+    moto?: Moto;
 }

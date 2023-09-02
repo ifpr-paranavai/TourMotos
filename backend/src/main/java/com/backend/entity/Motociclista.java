@@ -33,4 +33,8 @@ public class Motociclista {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="rota")
     private Rota rota;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="moto")
+    private Moto moto;
 }

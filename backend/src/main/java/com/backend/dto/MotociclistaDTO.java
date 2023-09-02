@@ -1,5 +1,6 @@
 package com.backend.dto;
 
+import com.backend.entity.Moto;
 import com.backend.entity.Rota;
 import lombok.*;
 
@@ -21,4 +22,6 @@ public class MotociclistaDTO {
     private String senha;
 
     private Rota rota;
+
+    private Moto moto;
 }

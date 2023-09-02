@@ -1,0 +1,10 @@
+.register-alternativo, .login-alternativo {
+    color: red;
+    padding-top: 15px;
+    background-color: transparent!important;
+    border: none!important;
+}
+
+.register, .login {
+    margin-left: 15px
+}
