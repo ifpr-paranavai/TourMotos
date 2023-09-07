@@ -18,6 +18,7 @@ import {ComponentsModule} from "../../components/components.module";
 import {RegisterComponent} from "../../init/resgister/register.component";
 import {LoginComponent} from "../../init/login/login.component";
 import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
+import {LogoutComponent} from "../../init/logout/logout.component";
 
 @NgModule({
     imports: [
@@ -42,6 +43,7 @@ import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
         RegisterComponent,
         LoginComponent,
         MotorcycleComponent,
+        LogoutComponent
     ]
 })
 

@@ -7,6 +7,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import {RegisterComponent} from "../../init/resgister/register.component";
 import {LoginComponent} from "../../init/login/login.component";
 import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
+import {LogoutComponent} from "../../init/logout/logout.component";
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,6 +58,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'register',       component: RegisterComponent },
     { path: 'login',       component: LoginComponent },
-    { path: 'logout',       component: RegisterComponent },
+    { path: 'logout',       component: LogoutComponent },
     { path: 'motorcycle',       component: MotorcycleComponent },
 ];
