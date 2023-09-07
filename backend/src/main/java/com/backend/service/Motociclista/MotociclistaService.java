@@ -9,7 +9,7 @@ public interface MotociclistaService{
 
     List<Motociclista> buscarTodos();
 
-    List<Motociclista> buscaPerfilComLogin(String email, String senha) throws InfoException;
+    Motociclista buscaPerfilComLogin(String email, String senha) throws InfoException;
 
     Motociclista inserir(Motociclista motociclista) throws InfoException;
 

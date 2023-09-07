@@ -8,3 +8,12 @@
 .register, .login {
     margin-left: 15px
 }
+
+.list{
+    margin-top: 50px;
+}
+
+.btn-delete{
+    border: none;
+    border-radius: 5px;
+}

@@ -9,5 +9,5 @@ import java.util.List;
 public interface MotociclistaRepository extends JpaRepository<Motociclista, Long> {
     List<Motociclista> findByCpf(String cpf);
 
-    List<Motociclista> findMotociclistaByEmail(String email);
+   Motociclista findMotociclistaByEmail(String email);
 }

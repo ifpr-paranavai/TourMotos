@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UserProfileService} from "./user-profile.service";
 import {Observable} from "rxjs";
 import {SessionStorage} from "../../SessionStorage";
@@ -17,7 +17,6 @@ export class UserProfileComponent extends SessionStorage implements OnInit{
 
   ngOnInit() {
     this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
-    this.motociclista = this.motociclista[0];
   }
 
   buscarPerfil(id: number){

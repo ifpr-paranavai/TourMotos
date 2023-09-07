@@ -37,13 +37,13 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     }
 
     @Override
-    public List<Motociclista> buscaPerfilComLogin(String email, String senha) throws InfoException {
-        List<Motociclista> motociclistaOptional = motociclistaRepository.findMotociclistaByEmail(email);
-        if (passwordEncoder().matches(senha, motociclistaOptional.get(0).getSenha())) {
-            if (!motociclistaOptional.isEmpty()) {
+    public Motociclista buscaPerfilComLogin(String email, String senha) throws InfoException {
+        Motociclista motociclistaOptional = motociclistaRepository.findMotociclistaByEmail(email);
+        if (passwordEncoder().matches(senha, motociclistaOptional.getSenha())) {
+            if (motociclistaOptional != null) {
                 return motociclistaOptional;
             } else {
-                throw new InfoException("Motociclista não encontrado: " + motociclistaOptional.get(0).getNome(), HttpStatus.NOT_FOUND);
+                throw new InfoException("Motociclista não encontrado: " + motociclistaOptional.getNome(), HttpStatus.NOT_FOUND);
             }
         }else{
             throw new InfoException("Senha incorreta", HttpStatus.NOT_FOUND);
@@ -54,7 +54,7 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     public Motociclista inserir(Motociclista motociclista) throws InfoException {
         if (UtilsMotociclista.validarMotociclista(motociclista)) {
             if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {
-                if (motociclistaRepository.findMotociclistaByEmail(motociclista.getEmail()).isEmpty()) {
+                if (motociclistaRepository.findMotociclistaByEmail(motociclista.getEmail()) != null) {
                     if (UtilsMotociclista.validarCPF(motociclista.getCpf())) {
                         if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
                             motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));
@@ -78,6 +78,11 @@ public class MotociclistaServiceImpl implements MotociclistaService {
             if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {
                 motociclistaOptional.get().setNome(motociclista.getNome());
                 motociclistaOptional.get().setEmail(motociclista.getEmail());
+                if(motociclista.getMoto() != null){
+                    motociclistaOptional.get().setMoto(motociclista.getMoto());
+                }else{
+                    motociclistaOptional.get().setMoto(null);
+                }
                 motociclistaRepository.save(motociclistaOptional.get());
                 return motociclistaOptional.get();
             } else {

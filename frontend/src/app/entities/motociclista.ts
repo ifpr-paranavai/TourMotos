@@ -4,6 +4,6 @@ class Motociclista {
     cpf: string;
     email: string;
     senha: string;
-    rota?: Rota[];
+    rota?: Rota;
     moto?: Moto;
 }

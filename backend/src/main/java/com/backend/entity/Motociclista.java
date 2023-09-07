@@ -30,11 +30,11 @@ public class Motociclista {
     @Column(name="senha")
     private String senha;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="rota")
     private Rota rota;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="moto")
     private Moto moto;
 }

@@ -12,7 +12,11 @@ export class MotorcycleService {
 
     constructor() { }
 
-    verificaSeExisteMotocicleta(dados: Motociclista){
-        return axios.get(`${this.baseUrl}/buscaPerfilComLogin?email=${dados.email}&senha=${dados.senha}`);
+    cadastrarMoto(dados: Moto) {
+        return axios.post(`${this.baseUrl}/cadastrar`, dados);
+    }
+
+    excluirMoto(id: number){
+        return axios.delete(`${this.baseUrl}/deletar/${id}`);
     }
 }

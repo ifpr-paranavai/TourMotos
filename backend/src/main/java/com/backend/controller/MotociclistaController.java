@@ -30,7 +30,7 @@ public class MotociclistaController {
 
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/buscaPerfilComLogin")
-    public List<Motociclista> buscaPerfilComLogin(@RequestParam String email, @RequestParam String senha ) throws InfoException {
+    public Motociclista buscaPerfilComLogin(@RequestParam String email, @RequestParam String senha ) throws InfoException {
         return motociclistaService.buscaPerfilComLogin(email,senha);
     }
 
