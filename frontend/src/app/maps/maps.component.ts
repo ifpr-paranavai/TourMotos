@@ -92,11 +92,28 @@ export class MapsComponent implements OnInit {
         this.directionsService.route(request, (response, status) => {
             if (status === 'OK') {
                 this.directionsRenderer.setDirections(response);
+
+                // Criar o link para o Google Maps com a rota
+                const route = response.routes[0];
+                const startLatLng = `${route.legs[0].start_location.lat()},${route.legs[0].start_location.lng()}`;
+                const endLatLng = `${route.legs[0].end_location.lat()},${route.legs[0].end_location.lng()}`;
+                const mapsLink = `https://www.google.com/maps/dir/?api=1&origin=${startLatLng}&destination=${endLatLng}`;
+
+                // Exibir o link no console
+                console.log('Link para a rota no Google Maps:', mapsLink);
+
+                // Outras informações importantes, como distância e duração
+                const distance = route.legs[0].distance.text;
+                const duration = route.legs[0].duration.text;
+
+                console.log('Distância:', distance);
+                console.log('Duração:', duration);
             } else {
                 console.log('Directions request failed due to ' + status);
             }
         });
     }
+
 
     criarObjetos(stringSeparadaPorVirgulas) {
         const valores = stringSeparadaPorVirgulas.split(',');
