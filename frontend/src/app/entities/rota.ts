@@ -3,6 +3,6 @@ class Rota{
     pontoPartida: string;
     pontoDestino: string;
     distancia: number;
+    tempoViagem: string
     parada?: Parada;
-    pontoInteresse?: PontoInteresse;
 }

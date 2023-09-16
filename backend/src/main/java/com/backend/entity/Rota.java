@@ -32,11 +32,10 @@ public class Rota implements Serializable {
     @Column(name = "distancia")
     private Double distancia;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "tempoViagem")
+    private String tempoViagem;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parada")
     private Parada parada;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pontoInteresse")
-    private PontoInteresse pontoInteresse;
 }
