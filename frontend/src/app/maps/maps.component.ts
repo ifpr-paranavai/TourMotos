@@ -104,6 +104,10 @@ export class MapsComponent implements OnInit {
                 const route = response.routes[0];
                 const startLatLng = request.origin.trim().replace(/\s+/g, '+');
                 const endLatLng = request.destination.trim().replace(/\s+/g, '+');
+                let distance = '';
+                let distanceValues = [];
+                let duration = '';
+                let durationValues = [];
 
                 // Adicione os pontos de parada à URL com "|"
                 const waypointsString = this.stopsList.map(waypoint => waypoint.location).join('/');
@@ -113,11 +117,59 @@ export class MapsComponent implements OnInit {
                 console.log('Link para a rota no Google Maps:', mapsLink);
 
                 // Outras informações importantes, como distância e duração
-                const distance = route.legs[0].distance.text;
-                const duration = route.legs[0].duration.text;
+                for (let i = 0; i < route.legs.length; i++) {
+                    distance += route.legs[i].distance.text;
+                    duration += route.legs[i].duration.text + ',';
+                }
+                distanceValues = distance.split('km').map(value => parseFloat(value.replace(',', '.')));
+                distanceValues.pop();
+                // Divida a string em valores individuais usando split()
+                durationValues = duration.split(',').reduce((acc, value) => {
+                    // Verifique se a string contém "minutos"
+                    if (value.includes('hora') || value.includes('horas')) {
+                        // Verifique se a string contém "hora"
+                        if (value.includes('minutos') || value.includes('minuto')) {
+                            // Se a string contiver "hora" e "minutos", extraia ambos os valores
+                            const hoursMinutesMatch = value.match(/(\d+)\s*hora\s*(\d+)\s*minutos/);
+                            if (hoursMinutesMatch) {
+                                const hours = parseFloat(hoursMinutesMatch[1]);
+                                const minutes = parseFloat(hoursMinutesMatch[2]);
+                                if (!isNaN(hours) && !isNaN(minutes)) {
+                                    // Converta horas para minutos e some com os minutos adicionais
+                                    acc.push(hours * 60 + minutes);
+                                }
+                            }
+                        } else {
+                            // Se a string contiver apenas "hora", extraia o valor antes de "hora" e multiplique por 60, depois adicione ao acumulador
+                            const hoursMatch = value.match(/(\d+)\s*hora/);
+                            if (hoursMatch) {
+                                const hours = parseFloat(hoursMatch[1]);
+                                if (!isNaN(hours)) {
+                                    acc.push(hours * 60);
+                                }
+                            }
+                        }
+                    } else if (value.includes('minutos') || value.includes('minuto')) {
+                        // Extraia o número antes de "minutos" e adicione ao acumulador
+                        const minutesMatch = value.match(/(\d+)\s*minutos/);
+                        if (minutesMatch) {
+                            const minutes = parseFloat(minutesMatch[1]);
+                            if (!isNaN(minutes)) {
+                                acc.push(minutes);
+                            }
+                        }
+                    }
+                    return acc;
+                }, []);
 
-                console.log('Distância:', distance);
-                console.log('Duração:', duration);
+                const totalDistance = distanceValues.reduce((acc, value) => acc + value, 0);
+
+                // Somando os valores da duração
+                const totalDuration = durationValues.reduce((acc, value) => acc + value, 0);
+
+                // Agora você tem a distância total em km e a duração total em minutos
+                console.log('Distância Total:', totalDistance, 'km');
+                console.log('Duração Total (minutos):', totalDuration);
 
                 this.startPoint = '';
                 this.endPoint = '';
