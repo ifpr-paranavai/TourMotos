@@ -76,6 +76,7 @@ export class MapsComponent implements OnInit {
 
         if (this.stops == undefined || this.stops == '') {
             this.stops = null;
+            this.stopsList = [];
         } else {
             this.submitForm(this.stops);
         }
@@ -117,6 +118,11 @@ export class MapsComponent implements OnInit {
 
                 console.log('Distância:', distance);
                 console.log('Duração:', duration);
+
+                this.startPoint = '';
+                this.endPoint = '';
+                this.stops = '';
+                this.stopsList = [];
             } else {
                 console.log('Directions request failed due to ' + status);
             }
@@ -125,13 +131,15 @@ export class MapsComponent implements OnInit {
 
 
     criarObjetos(stringSeparadaPorVirgulas) {
-        const valores = stringSeparadaPorVirgulas.split(',');
+        if (stringSeparadaPorVirgulas) {
+            const valores = stringSeparadaPorVirgulas.split(',');
 
-        this.stopsList = valores.map((valor) => {
-            // Substitua espaços por '+'
-            const location = valor.trim().replace(/\s+/g, '+');
-            return { location };
-        });
+            this.stopsList = valores.map((valor) => {
+                // Substitua espaços por '+'
+                const location = valor.trim().replace(/\s+/g, '+');
+                return {location};
+            });
+        }
     }
 
     submitForm(stops: string) {
