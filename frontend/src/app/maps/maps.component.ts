@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 declare var google: any; // Declaração para usar a biblioteca global do Google Maps
 
@@ -21,9 +21,9 @@ export class MapsComponent implements OnInit {
     endPoint: string;
     stops: string;
     stopsList: any[];
-    pointsOfInterest: string;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     ngOnInit(): void {
         this.getCurrentLocation();
@@ -34,7 +34,11 @@ export class MapsComponent implements OnInit {
         this.http.get<any>(geocodingUrl).subscribe((response) => {
             if (response.status === 'OK' && response.results.length > 0) {
                 this.addressData = response.results;
-                this.startPoint = this.addressData[0].formatted_address
+                for (let i = 0; i < this.addressData.length; i++) {
+                    if (this.addressData[i].address_components.length == 3) {
+                        this.startPoint = this.addressData[i].formatted_address
+                    }
+                }
                 this.initMap();
             }
         });
@@ -72,6 +76,8 @@ export class MapsComponent implements OnInit {
 
         if (this.stops == undefined || this.stops == '') {
             this.stops = null;
+        } else {
+            this.submitForm(this.stops);
         }
 
         const request = {
@@ -95,9 +101,12 @@ export class MapsComponent implements OnInit {
 
                 // Criar o link para o Google Maps com a rota
                 const route = response.routes[0];
-                const startLatLng = `${route.legs[0].start_location.lat()},${route.legs[0].start_location.lng()}`;
-                const endLatLng = `${route.legs[0].end_location.lat()},${route.legs[0].end_location.lng()}`;
-                const mapsLink = `https://www.google.com/maps/dir/?api=1&origin=${startLatLng}&destination=${endLatLng}`;
+                const startLatLng = request.origin.trim().replace(/\s+/g, '+');
+                const endLatLng = request.destination.trim().replace(/\s+/g, '+');
+
+                // Adicione os pontos de parada à URL com "|"
+                const waypointsString = this.stopsList.map(waypoint => waypoint.location).join('/');
+                const mapsLink = `https://www.google.com/maps/dir/${startLatLng}/${waypointsString}/${endLatLng}`;
 
                 // Exibir o link no console
                 console.log('Link para a rota no Google Maps:', mapsLink);
@@ -119,15 +128,16 @@ export class MapsComponent implements OnInit {
         const valores = stringSeparadaPorVirgulas.split(',');
 
         this.stopsList = valores.map((valor) => {
-            return { location: valor.trim() };
+            // Substitua espaços por '+'
+            const location = valor.trim().replace(/\s+/g, '+');
+            return { location };
         });
     }
 
-    submitForm() {
+    submitForm(stops: string) {
         if (this.startPoint) {
             if (this.endPoint) {
-                this.criarObjetos(this.stops);
-                this.initMap();
+                this.criarObjetos(stops);
             } else {
                 this.endPoint = '';
             }
