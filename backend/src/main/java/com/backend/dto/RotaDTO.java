@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -23,6 +25,6 @@ public class RotaDTO{
 
     private String tempoViagem;
 
-    private Parada parada;
+    private List<Parada> parada;
 
 }

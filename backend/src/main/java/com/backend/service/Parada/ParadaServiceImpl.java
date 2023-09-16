@@ -36,6 +36,7 @@ public class ParadaServiceImpl implements ParadaService {
                     .id(id)
                     .nome(parada.getNome() != null ? parada.getNome() : null)
                     .endereco(parada.getEndereco() != null ? parada.getEndereco() : null)
+                    .rota(parada.getRota() != null ? parada.getRota() : null)
                     .build();
 
             if (UtilsParada.validarParada(paradaBuilder)) {

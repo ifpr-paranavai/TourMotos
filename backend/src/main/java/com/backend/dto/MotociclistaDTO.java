@@ -4,6 +4,8 @@ import com.backend.entity.Moto;
 import com.backend.entity.Rota;
 import lombok.*;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class MotociclistaDTO {
 
     private String senha;
 
-    private Rota rota;
+    private List<Rota> rota;
 
     private Moto moto;
 }

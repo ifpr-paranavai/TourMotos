@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 
 @Entity
@@ -35,7 +36,10 @@ public class Rota implements Serializable {
     @Column(name = "tempoViagem")
     private String tempoViagem;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parada")
-    private Parada parada;
+    @OneToMany(mappedBy = "rota", cascade = CascadeType.ALL)
+    private List<Parada> parada;
+
+    @ManyToOne
+    @JoinColumn(name = "motociclista_id")
+    private Motociclista motociclista;
 }

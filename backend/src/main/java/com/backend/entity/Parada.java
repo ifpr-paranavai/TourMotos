@@ -27,4 +27,8 @@ public class Parada implements Serializable {
     @Column(name = "endereco")
     private String endereco;
 
+    @ManyToOne
+    @JoinColumn(name = "rota_id")
+    private Rota rota;
+
 }

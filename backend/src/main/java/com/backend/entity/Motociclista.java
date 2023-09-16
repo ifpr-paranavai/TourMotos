@@ -3,6 +3,8 @@ package com.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "motociclista")
 @Builder
@@ -30,9 +32,8 @@ public class Motociclista {
     @Column(name="senha")
     private String senha;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="rota")
-    private Rota rota;
+    @OneToMany(mappedBy = "motociclista", cascade = CascadeType.ALL)
+    private List<Rota> rotas;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="moto")
