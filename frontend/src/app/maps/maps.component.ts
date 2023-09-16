@@ -84,7 +84,7 @@ export class MapsComponent implements OnInit {
         const request = {
             origin: this.startPoint,
             destination: this.endPoint,
-            travelMode: google.maps.TravelMode.DRIVING,
+            travelMode: google.maps.TravelMode.TWO_WHEELER,
             drivingOptions: {
                 departureTime: new Date(Date.now()),
                 trafficModel: google.maps.TrafficModel.OPTIMISTIC
