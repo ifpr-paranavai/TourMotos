@@ -25,6 +25,6 @@ public class RotaDTO{
 
     private String tempoViagem;
 
-    private List<Parada> parada;
+    private String link;
 
 }

@@ -20,6 +20,10 @@ public class RotaServiceImpl implements RotaService {
     public List<Rota> buscarTodos() {
         return rotaRepository.findAll();
     }
+    @Override
+    public List<Rota> buscarPorMotociclista(Long id) {
+        return rotaRepository.findAllByMotociclista_Id(id);
+    }
 
     @Override
     public Rota inserir(Rota rota) throws InfoException {

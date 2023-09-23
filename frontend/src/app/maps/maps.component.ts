@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {MapsService} from "./maps.service";
+import {SessionStorage} from "../../SessionStorage";
 
 declare var google: any; // Declaração para usar a biblioteca global do Google Maps
 
@@ -8,7 +10,7 @@ declare var google: any; // Declaração para usar a biblioteca global do Google
     templateUrl: './maps.component.html',
     styleUrls: ['./maps.component.css']
 })
-export class MapsComponent implements OnInit {
+export class MapsComponent extends SessionStorage implements OnInit {
     map: google.maps.Map;
     center: google.maps.LatLngLiteral;
     zoom = 18;
@@ -21,12 +23,25 @@ export class MapsComponent implements OnInit {
     endPoint: string;
     stops: string;
     stopsList: any[];
+    link: string;
+    rota: Rota;
+    parada: Parada;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private mapsService: MapsService) {
+        super();
     }
 
     ngOnInit(): void {
         this.getCurrentLocation();
+        this.rota = {
+            id: null,
+            link:'',
+            tempoViagem:'',
+            pontoDestino:'',
+            pontoPartida:'',
+            motociclista: null,
+            distancia: null,
+        }
     }
 
     getAddressData() {
@@ -167,9 +182,14 @@ export class MapsComponent implements OnInit {
                 // Somando os valores da duração
                 const totalDuration = durationValues.reduce((acc, value) => acc + value, 0);
 
-                // Agora você tem a distância total em km e a duração total em minutos
-                console.log('Distância Total:', totalDistance, 'km');
-                console.log('Duração Total (minutos):', totalDuration);
+                this.rota.link = mapsLink;
+                this.rota.distancia = totalDistance;
+                this.rota.motociclista = this.getSession();
+                this.rota.pontoPartida = this.startPoint;
+                this.rota.pontoDestino = this.endPoint;
+                this.rota.tempoViagem = totalDuration ;
+
+                this.mapsService.cadastrarRota(this.rota);
 
                 this.startPoint = '';
                 this.endPoint = '';

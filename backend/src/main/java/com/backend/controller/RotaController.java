@@ -23,6 +23,12 @@ public class RotaController {
         return rotaService.buscarTodos();
     }
 
+    @GetMapping("/listar/{id}")
+    @CrossOrigin("http://localhost:4200")
+    public List<Rota> buscarPorMotociclista(@PathVariable("id") Long id) throws InfoException {
+        return rotaService.buscarPorMotociclista(id);
+    }
+
     @PostMapping("/cadastrar")
     @CrossOrigin("http://localhost:4200")
     public Rota inserir(@RequestBody Rota rota) throws InfoException {

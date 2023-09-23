@@ -6,6 +6,17 @@ export class SessionStorage {
     newSession(){
         sessionStorage.setItem('motociclista', null);
     }
+
+    getSession(): Motociclista | null {
+        const motociclistaJSON = sessionStorage.getItem('motociclista');
+
+        if (motociclistaJSON) {
+            const motociclista: Motociclista = JSON.parse(motociclistaJSON);
+            return motociclista;
+        } else {
+            return null; // Retorna null se não houver nenhum objeto armazenado
+        }
+    }
 }
 
 // Para recuperar o objeto do SessionStorage
