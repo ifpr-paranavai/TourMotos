@@ -31,6 +31,10 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
         this.verificaSeExisteMoto(this.motociclista);
     }
 
+    reload(){
+        window.location.reload();
+    }
+
     verificaSeExisteMoto(motociclista: Motociclista) {
         if (motociclista.moto != null) {
             this.existeMoto = true;
@@ -44,9 +48,10 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
         if (moto.marca != '' && moto.modelo != '') {
             this.motorcycleService.cadastrarMoto(moto).then(value => {
                 this.motociclista.moto = value.data;
-                this.userProfileService.editarMotociclista(this.motociclista).then(value1 =>
-                    this.session(value1.data)
-                );
+                this.userProfileService.editarMotociclista(this.motociclista).then(value1 => {
+                    this.session(value1.data);
+                    this.reload();
+                });
             });
         }
     }
@@ -57,7 +62,8 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
                 this.motos.splice(0,1);
                 this.motociclista.moto = null;
                 this.userProfileService.editarMotociclista(this.motociclista).then(value1 => {
-                    this.session(value1.data)
+                    this.session(value1.data);
+                    this.reload();
                 });
             });
         }

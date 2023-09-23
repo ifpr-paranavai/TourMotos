@@ -38,8 +38,11 @@ export class RegisterComponent implements OnInit {
                 motociclista.email &&
                 motociclista.cpf &&
                 motociclista.senha) {
-                this.registerService.cadastrarMotociclista(motociclista);
-                this.loginCadastro();
+                this.registerService.cadastrarMotociclista(motociclista).then(value => {
+                    if(value){
+                        this.loginCadastro();
+                    }
+                });
             }
         } catch (e) {
             console.error(e);

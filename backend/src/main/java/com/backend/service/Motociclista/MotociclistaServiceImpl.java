@@ -54,7 +54,7 @@ public class MotociclistaServiceImpl implements MotociclistaService {
     public Motociclista inserir(Motociclista motociclista) throws InfoException {
         if (UtilsMotociclista.validarMotociclista(motociclista)) {
             if (UtilsMotociclista.validarEmail(motociclista.getEmail())) {
-                if (motociclistaRepository.findMotociclistaByEmail(motociclista.getEmail()) != null) {
+                if (motociclistaRepository.findMotociclistaByEmail(motociclista.getEmail()) == null) {
                     if (UtilsMotociclista.validarCPF(motociclista.getCpf())) {
                         if (motociclistaRepository.findByCpf(motociclista.getCpf()).isEmpty()) {
                             motociclista.setSenha(passwordEncoder().encode(motociclista.getSenha()));

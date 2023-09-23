@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="row" style="justify-content: space-between">
-                                <button type="button" (click)="cadastrarMoto(moto)" class="btn btn-danger col-2 login">
+                                <button [disabled]="motos[0]?.modelo != null" type="button" (click)="cadastrarMoto(moto)" class="btn btn-danger col-2 login">
                                     Cadastrar
                                 </button>
                             </div>
@@ -35,7 +35,7 @@
                                     <li *ngFor="let moto of motos; let i = index">
                                         <div class="row">
                                             <div class="col-4">
-                                                {{ moto.modelo }} - {{ moto.marca }}
+                                                {{ moto?.modelo }} - {{ moto?.marca }}
                                             </div>
                                             <div class="col-8 right">
                                                 <button class="btn-danger btn-delete" (click)="excluirMoto(moto)">
