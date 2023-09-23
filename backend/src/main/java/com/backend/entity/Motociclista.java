@@ -32,9 +32,6 @@ public class Motociclista {
     @Column(name="senha")
     private String senha;
 
-    @OneToMany(mappedBy = "motociclista", cascade = CascadeType.ALL)
-    private List<Rota> rotas;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="moto")
     private Moto moto;

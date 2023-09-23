@@ -16,7 +16,12 @@ export class MapsService {
         return axios.post(`${this.baseUrl}/cadastrar`, dados);
     }
 
-    buscaPorMotociclista(dados: number) {
-        return axios.get(`${this.baseUrl}/listarPorMotociclista/${dados}`);
+    buscaPorMotociclista(dados: number): Promise<Rota[]> {
+        return axios.get(`${this.baseUrl}/listar/${dados}`)
+            .then(response => response.data as Rota[])
+            .catch(error => {
+                throw error;
+            });
     }
+
 }

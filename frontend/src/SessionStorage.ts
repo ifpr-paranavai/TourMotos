@@ -17,6 +17,17 @@ export class SessionStorage {
             return null; // Retorna null se não houver nenhum objeto armazenado
         }
     }
+
+    getId(): number | null {
+        const motociclistaJSON = sessionStorage.getItem('motociclista');
+
+        if (motociclistaJSON) {
+            const motociclista: Motociclista = JSON.parse(motociclistaJSON);
+            return motociclista.id;
+        } else {
+            return null; // Retorna null se não houver nenhum objeto armazenado
+        }
+    }
 }
 
 // Para recuperar o objeto do SessionStorage
