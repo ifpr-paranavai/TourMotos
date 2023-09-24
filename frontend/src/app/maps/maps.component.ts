@@ -23,6 +23,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
     endPoint: string;
     stops: string;
     stopsList: any[];
+    stopsListBack: any[];
     link: string;
     rota: Rota;
     parada: Parada;
@@ -41,6 +42,12 @@ export class MapsComponent extends SessionStorage implements OnInit {
             pontoPartida:'',
             motociclista: null,
             distancia: null,
+        };
+        this.parada = {
+            id: null,
+            rota: null,
+            endereco: '',
+            nome: ''
         }
     }
 
@@ -189,7 +196,15 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 this.rota.pontoDestino = this.endPoint;
                 this.rota.tempoViagem = totalDuration ;
 
-                this.mapsService.cadastrarRota(this.rota);
+                this.mapsService.cadastrarRota(this.rota).then(value => {
+
+                    for(let i = 0; i<this.stopsListBack.length; i++) {
+                        this.parada.rota = value.data;
+                        this.parada.nome = this.stopsListBack[i];
+                        this.parada.endereco = this.stopsListBack[i];
+                        this.mapsService.cadastrarParada(this.parada);
+                    }
+                });
 
                 this.startPoint = '';
                 this.endPoint = '';
@@ -205,7 +220,9 @@ export class MapsComponent extends SessionStorage implements OnInit {
     criarObjetos(stringSeparadaPorVirgulas) {
         if (stringSeparadaPorVirgulas) {
             const valores = stringSeparadaPorVirgulas.split(',');
-
+            this.stopsListBack = valores.map((valor) => {
+                return valor;
+            });
             this.stopsList = valores.map((valor) => {
                 // Substitua espaços por '+'
                 const location = valor.trim().replace(/\s+/g, '+');

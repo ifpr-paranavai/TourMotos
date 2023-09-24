@@ -12,6 +12,9 @@ public class UtilsParada {
         if (parada.getEndereco() == null || parada.getEndereco().equals("")) {
             throw new InfoException("Ocorreu um erro ao cadastrar parada", HttpStatus.BAD_REQUEST);
         }
+        if (parada.getRota() == null || parada.getRota().equals("")) {
+            throw new InfoException("Ocorreu um erro ao cadastrar parada", HttpStatus.BAD_REQUEST);
+        }
         return true;
     }
 }

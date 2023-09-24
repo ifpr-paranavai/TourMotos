@@ -43,7 +43,6 @@ public class RotaServiceImpl implements RotaService {
                     .pontoPartida(rota.getPontoPartida() != null ? rota.getPontoPartida()  : null)
                     .tempoViagem(rota.getTempoViagem()  != null ? rota.getTempoViagem()  : null)
                     .motociclista(rota.getMotociclista()  != null ? rota.getMotociclista()  : null)
-                    .parada(rota.getParada() != null ? rota.getParada() : null)
                     .build();
 
             if (UtilsRota.validarRota(rotaBuilder)) {

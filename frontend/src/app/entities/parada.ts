@@ -2,5 +2,5 @@ class Parada {
     id: number;
     nome: string;
     endereco: string;
-    rota: number;
+    rota: Rota;
 }

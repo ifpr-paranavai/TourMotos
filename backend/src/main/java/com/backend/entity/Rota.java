@@ -39,9 +39,6 @@ public class Rota implements Serializable {
     @Column(name = "link")
     private String link;
 
-    @OneToMany(mappedBy = "rota", cascade = CascadeType.ALL)
-    private List<Parada> parada;
-
     @ManyToOne
     @JoinColumn(name = "motociclista_id")
     private Motociclista motociclista;
