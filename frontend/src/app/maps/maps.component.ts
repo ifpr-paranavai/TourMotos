@@ -106,7 +106,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
         const request = {
             origin: this.startPoint,
             destination: this.endPoint,
-            travelMode: google.maps.TravelMode.TWO_WHEELER,
+            travelMode: google.maps.TravelMode.DRIVING,
             drivingOptions: {
                 departureTime: new Date(Date.now()),
                 trafficModel: google.maps.TrafficModel.OPTIMISTIC
@@ -152,7 +152,8 @@ export class MapsComponent extends SessionStorage implements OnInit {
                         // Verifique se a string contém "hora"
                         if (value.includes('minutos') || value.includes('minuto')) {
                             // Se a string contiver "hora" e "minutos", extraia ambos os valores
-                            const hoursMinutesMatch = value.match(/(\d+)\s*hora\s*(\d+)\s*minutos/);
+                            const hoursMinutesMatch = value.match(/(\d+)\s*horas?\s*(\d+)\s*minutos?/
+                            );
                             if (hoursMinutesMatch) {
                                 const hours = parseFloat(hoursMinutesMatch[1]);
                                 const minutes = parseFloat(hoursMinutesMatch[2]);
@@ -163,7 +164,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
                             }
                         } else {
                             // Se a string contiver apenas "hora", extraia o valor antes de "hora" e multiplique por 60, depois adicione ao acumulador
-                            const hoursMatch = value.match(/(\d+)\s*hora/);
+                            const hoursMatch = value.match(/(\d+)\s*hora(s)?/);
                             if (hoursMatch) {
                                 const hours = parseFloat(hoursMatch[1]);
                                 if (!isNaN(hours)) {
@@ -173,7 +174,8 @@ export class MapsComponent extends SessionStorage implements OnInit {
                         }
                     } else if (value.includes('minutos') || value.includes('minuto')) {
                         // Extraia o número antes de "minutos" e adicione ao acumulador
-                        const minutesMatch = value.match(/(\d+)\s*minutos/);
+                        const minutesMatch = value.match(/(\d+)\s*minuto?s?/
+                        );
                         if (minutesMatch) {
                             const minutes = parseFloat(minutesMatch[1]);
                             if (!isNaN(minutes)) {

@@ -19,6 +19,7 @@ import {RegisterComponent} from "../../init/resgister/register.component";
 import {LoginComponent} from "../../init/login/login.component";
 import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
 import {LogoutComponent} from "../../init/logout/logout.component";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import {LogoutComponent} from "../../init/logout/logout.component";
         MatTooltipModule,
         GoogleMapsModule,
         ComponentsModule,
+        NgxChartsModule,
     ],
     declarations: [
         DashboardComponent,
