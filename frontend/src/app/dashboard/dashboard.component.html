@@ -3,14 +3,12 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <p>aqui deve ficar o gráfico de pizza rota por tempo</p>
                     <ngx-charts-pie-chart
                             [view]="view"
                             scheme="picnic"
-                            [results]="single"
+                            [results]="routePerTime"
                             [gradient]="gradient"
                             [legend]="showLegend"
-                            [legendPosition]="legendPosition"
                             [doughnut]="isDoughnut"
                     >
                     </ngx-charts-pie-chart>
@@ -19,34 +17,32 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <p>aqui deve ficar o gráfico de pizza rota por distancia</p>
                     <ngx-charts-pie-chart
                             [view]="view"
                             scheme="picnic"
-                            [results]="single"
+                            [results]="routePerDistance"
                             [gradient]="gradient"
                             [legend]="showLegend"
-                            [legendPosition]="legendPosition"
                             [doughnut]="isDoughnut"
                     >
                     </ngx-charts-pie-chart>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <p>aqui deve ficar o gráfico de pizza rotas </p>
-                    <ngx-charts-pie-chart
-                            [view]="view"
-                            scheme="picnic"
-                            [results]="single"
-                            [gradient]="gradient"
-                            [legend]="showLegend"
-                            [legendPosition]="legendPosition"
-                            [doughnut]="isDoughnut"
-                    >
-                    </ngx-charts-pie-chart>
-                </div>
-            </div>
+<!--            <div class="col-md-4">-->
+<!--                <div class="card">-->
+<!--                    <p>aqui deve ficar o gráfico de pizza rotas </p>-->
+<!--                    <ngx-charts-pie-chart-->
+<!--                            [view]="view"-->
+<!--                            scheme="picnic"-->
+<!--                            [results]="single"-->
+<!--                            [gradient]="gradient"-->
+<!--                            [legend]="showLegend"-->
+<!--                            [legendPosition]="legendPosition"-->
+<!--                            [doughnut]="isDoughnut"-->
+<!--                    >-->
+<!--                    </ngx-charts-pie-chart>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </div>

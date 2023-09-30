@@ -14,4 +14,6 @@ public interface ParadaService {
     Parada alterar(Long id, Parada parada) throws InfoException;
 
     void excluir(Long id) throws InfoException;
+
+    List<Parada> buscarPorRota(Long id);
 }

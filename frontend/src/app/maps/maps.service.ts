@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import axios from "axios";
 
 
@@ -11,7 +11,8 @@ export class MapsService {
     private baseUrlParada = 'http://localhost:8080/api/parada';
     protected user = JSON.parse(sessionStorage.getItem('motociclista'));
 
-    constructor() { }
+    constructor() {
+    }
 
     cadastrarRota(dados: Rota) {
         return axios.post(`${this.baseUrlRota}/cadastrar`, dados);
@@ -28,5 +29,14 @@ export class MapsService {
                 throw error;
             });
     }
+
+    buscaParadaPorRota(dados: number): Promise<Parada[]> {
+        return axios.get(`${this.baseUrlParada}/listar/${dados}`)
+            .then(response => response.data as Parada[])
+            .catch(error => {
+                throw error;
+            });
+    }
+
 
 }

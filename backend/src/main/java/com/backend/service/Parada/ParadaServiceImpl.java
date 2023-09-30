@@ -22,6 +22,11 @@ public class ParadaServiceImpl implements ParadaService {
     }
 
     @Override
+    public List<Parada> buscarPorRota(Long id) {
+        return paradaRepository.findAllByRota_Id(id);
+    }
+
+    @Override
     public Parada inserir(Parada parada) throws InfoException {
         if (UtilsParada.validarParada(parada)) {
             return paradaRepository.save(parada);
