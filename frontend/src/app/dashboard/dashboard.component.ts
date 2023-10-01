@@ -10,16 +10,16 @@ import {MapsService} from "../maps/maps.service";
     styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent extends SessionStorage implements OnInit {
-    single: any[];
     routePerTime: any[] = [];
     routePerDistance: any[] = [];
-    view: any[] = [340, 340];
+    view: any[] = [500, 320];
 
     // options
     gradient: boolean = true;
     showLegend: boolean = false;
-    showLabels: boolean = true;
     isDoughnut: boolean = false;
+    legendPosition: string = 'below';
+    subtitulo=  '';
 
     constructor(private mapsService: MapsService) {
         super();
@@ -39,7 +39,7 @@ export class DashboardComponent extends SessionStorage implements OnInit {
             const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
             return {
                 name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
-                value: rota.tempoViagem
+                value:rota.distancia
             };
         });
 
