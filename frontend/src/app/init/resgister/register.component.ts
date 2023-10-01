@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RegisterService} from './register.service';
-import {SessionStorage} from "../../../SessionStorage";
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-register',
@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
 
     motociclista: Motociclista;
     url: string
+
 
     constructor(private registerService: RegisterService) {
     }
@@ -28,6 +29,24 @@ export class RegisterComponent implements OnInit {
         }
     }
 
+    alertSuccess() {
+        Swal.fire({
+            title:'Cadastrado com sucesso!',
+            icon:'success',
+            position:'top-end',
+            showConfirmButton: false,
+            timer: 1000});
+    }
+
+    alertError() {
+        Swal.fire( {
+            title:'Erro ao cadastrar!',
+            icon:'error',
+            position:'top-end',
+            showConfirmButton: false,
+            timer: 1000});
+    }
+
     loginCadastro(): void {
         window.location.replace(this.url);
     }
@@ -39,13 +58,14 @@ export class RegisterComponent implements OnInit {
                 motociclista.cpf &&
                 motociclista.senha) {
                 this.registerService.cadastrarMotociclista(motociclista).then(value => {
+                    this.alertSuccess();
                     if(value){
                         this.loginCadastro();
                     }
                 });
             }
         } catch (e) {
-            console.error(e);
+            this.alertError();
         }
     }
 }

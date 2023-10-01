@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MapsService} from "./maps.service";
 import {SessionStorage} from "../../SessionStorage";
+import Swal from "sweetalert2";
 
 declare var google: any; // Declaração para usar a biblioteca global do Google Maps
 
@@ -36,10 +37,10 @@ export class MapsComponent extends SessionStorage implements OnInit {
         this.getCurrentLocation();
         this.rota = {
             id: null,
-            link:'',
-            tempoViagem:'',
-            pontoDestino:'',
-            pontoPartida:'',
+            link: '',
+            tempoViagem: '',
+            pontoDestino: '',
+            pontoPartida: '',
             motociclista: null,
             distancia: null,
         };
@@ -196,17 +197,28 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 this.rota.motociclista = this.getSession();
                 this.rota.pontoPartida = this.startPoint;
                 this.rota.pontoDestino = this.endPoint;
-                this.rota.tempoViagem = totalDuration ;
+                this.rota.tempoViagem = totalDuration;
 
-                this.mapsService.cadastrarRota(this.rota).then(value => {
+                try {
+                    this.mapsService.cadastrarRota(this.rota).then(value => {
+                        this.alertRouteSuccess();
+                        for (let i = 0; i < this.stopsListBack.length; i++) {
+                            this.parada.rota = value.data;
+                            this.parada.nome = this.stopsListBack[i];
+                            this.parada.endereco = this.stopsListBack[i];
+                            try {
 
-                    for(let i = 0; i<this.stopsListBack.length; i++) {
-                        this.parada.rota = value.data;
-                        this.parada.nome = this.stopsListBack[i];
-                        this.parada.endereco = this.stopsListBack[i];
-                        this.mapsService.cadastrarParada(this.parada);
-                    }
-                });
+                                this.mapsService.cadastrarParada(this.parada).then(value1 => {
+                                    this.alertStopsSuccess();
+                                });
+                            } catch (e) {
+                                this.alertStopsError();
+                            }
+                        }
+                    });
+                } catch (e) {
+                    this.alertRouteError();
+                }
 
                 this.startPoint = '';
                 this.endPoint = '';
@@ -216,6 +228,45 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 console.log('Directions request failed due to ' + status);
             }
         });
+    }
+
+    alertRouteSuccess() {
+        Swal.fire({
+            title: 'Rota cadastrada com sucesso!',
+            icon: 'success',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }
+
+    alertRouteError() {
+        Swal.fire({
+            title: 'Erro ao cadastrar rota!',
+            icon: 'error',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }
+
+    alertStopsSuccess() {
+        Swal.fire({
+            title: 'Paradas cadastradas com sucesso!',
+            icon: 'success',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }
+
+    alertStopsError() {
+        Swal.fire({
+            title:'Erro ao cadastrar paradas!',
+            icon:'error',
+            position:'top-end',
+            showConfirmButton: false,
+            timer: 1000});
     }
 
 
