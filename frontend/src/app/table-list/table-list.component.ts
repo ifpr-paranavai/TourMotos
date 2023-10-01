@@ -19,4 +19,16 @@ export class TableListComponent extends SessionStorage implements OnInit {
     });
   }
 
+  reload(){
+    window.location.reload();
+  }
+
+  excluirRota(rota: Rota) {
+    if (rota != null) {
+      this.mapsService.excluirRota(rota.id).then(value => {
+        this.reload();
+      });
+    }
+  }
+
 }

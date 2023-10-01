@@ -11,3 +11,7 @@
     background-color: #fff; /* Defina a cor de fundo desejada para o cabeçalho */
     z-index: 1; /* Certifique-se de que o cabeçalho fique acima do conteúdo rolável */
 }
+.btn-delete{
+    border: none;
+    border-radius: 5px;
+}

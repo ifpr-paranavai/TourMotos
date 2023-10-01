@@ -38,5 +38,9 @@ export class MapsService {
             });
     }
 
+    excluirRota(dados: number): Promise<Rota[]> {
+        return axios.delete(`${this.baseUrlRota}/deletar/${dados}`);
+    }
+
 
 }
