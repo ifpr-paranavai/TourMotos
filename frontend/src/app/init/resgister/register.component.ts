@@ -62,6 +62,8 @@ export class RegisterComponent implements OnInit {
                     if(value){
                         this.loginCadastro();
                     }
+                }).catch(reason => {
+                    this.alertError();
                 });
             }
         } catch (e) {

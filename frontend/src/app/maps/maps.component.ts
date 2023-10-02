@@ -210,11 +210,15 @@ export class MapsComponent extends SessionStorage implements OnInit {
 
                                 this.mapsService.cadastrarParada(this.parada).then(value1 => {
                                     this.alertStopsSuccess();
+                                }).catch(reason => {
+                                    this.alertStopsError();
                                 });
                             } catch (e) {
                                 this.alertStopsError();
                             }
                         }
+                    }).catch(reason => {
+                        this.alertRouteError();
                     });
                 } catch (e) {
                     this.alertRouteError();

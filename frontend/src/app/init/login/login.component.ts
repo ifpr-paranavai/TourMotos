@@ -61,7 +61,9 @@ export class LoginComponent extends SessionStorage {
                         this.alertSuccess();
                         window.location.assign(this.urlDashboard);
                     }
-                );
+                ).catch(reason => {
+                    this.alertError();
+                });
 
             }
         } catch (e) {

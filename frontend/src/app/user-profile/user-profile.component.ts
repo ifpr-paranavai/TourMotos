@@ -54,6 +54,8 @@ export class UserProfileComponent extends SessionStorage implements OnInit {
                 this.userProfileService.editarMotociclista(motociclista).then(value => {
                     this.alertSuccess();
                     this.session(value.data);
+                }).catch(reason => {
+                    this.alertError();
                 });
             } catch (e) {
                 this.alertError();

@@ -90,7 +90,11 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
                     this.userProfileService.editarMotociclista(this.motociclista).then(value1 => {
                         this.session(value1.data);
                         this.reload();
+                    }).catch(reason => {
+                        this.alertAddError();
                     });
+                }).catch(reason => {
+                    this.alertAddError();
                 });
             }
         } catch (e) {
@@ -109,6 +113,8 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
                         this.session(value1.data);
                         this.reload();
                     });
+                }).catch(reason => {
+                    this.alertExcludeError();
                 });
             }
         } catch (e) {
