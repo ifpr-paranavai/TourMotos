@@ -139,6 +139,17 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 // Exibir o link no console
                 console.log('Link para a rota no Google Maps:', mapsLink);
 
+                function convertDaysToMinutes(value: string): number {
+                    const daysMatch = value.match(/(\d+)\s*dia(s)?/);
+                    if (daysMatch) {
+                        const days = parseFloat(daysMatch[1]);
+                        if (!isNaN(days)) {
+                            return days * 24 * 60; // Converter dias em minutos (1 dia = 24 horas = 24 * 60 minutos)
+                        }
+                    }
+                    return 0; // Se não houver "dia" ou "dias", retorna 0 minutos
+                }
+
                 // Outras informações importantes, como distância e duração
                 for (let i = 0; i < route.legs.length; i++) {
                     distance += route.legs[i].distance.text;
@@ -148,9 +159,39 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 distanceValues.pop();
                 // Divida a string em valores individuais usando split()
                 durationValues = duration.split(',').reduce((acc, value) => {
-                    // Verifique se a string contém "minutos"
-                    if (value.includes('hora') || value.includes('horas')) {
-                        // Verifique se a string contém "hora"
+                    if (value.includes('dia') || value.includes('dias')) {
+                        const daysMinutes = convertDaysToMinutes(value);
+                        if (daysMinutes > 0) {
+                            acc.push(daysMinutes);
+                        }
+                        // Verificar se a string contém "hora" ou "minutos"
+                        if (value.includes('hora') || value.includes('horas')) {
+                            // Verificar se a string contém "hora"
+                            if (value.includes('minutos') || value.includes('minuto')) {
+                                // Se a string contiver "hora" e "minutos", extraia ambos os valores
+                                const hoursMinutesMatch = value.match(/(\d+)\s*horas?\s*(\d+)\s*minutos?/
+                                );
+                                if (hoursMinutesMatch) {
+                                    const hours = parseFloat(hoursMinutesMatch[1]);
+                                    const minutes = parseFloat(hoursMinutesMatch[2]);
+                                    if (!isNaN(hours) && !isNaN(minutes)) {
+                                        // Converta horas para minutos e some com os minutos adicionais
+                                        acc.push(hours * 60 + minutes);
+                                    }
+                                }
+                            } else {
+                                // Se a string contiver apenas "hora", extraia o valor antes de "hora" e multiplique por 60, depois adicione ao acumulador
+                                const hoursMatch = value.match(/(\d+)\s*hora(s)?/);
+                                if (hoursMatch) {
+                                    const hours = parseFloat(hoursMatch[1]);
+                                    if (!isNaN(hours)) {
+                                        acc.push(hours * 60);
+                                    }
+                                }
+                            }
+                        }
+                    } else if (value.includes('hora') || value.includes('horas')) {
+                        // Verificar se a string contém "hora"
                         if (value.includes('minutos') || value.includes('minuto')) {
                             // Se a string contiver "hora" e "minutos", extraia ambos os valores
                             const hoursMinutesMatch = value.match(/(\d+)\s*horas?\s*(\d+)\s*minutos?/
@@ -187,6 +228,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
                     return acc;
                 }, []);
 
+
                 const totalDistance = distanceValues.reduce((acc, value) => acc + value, 0);
 
                 // Somando os valores da duração
@@ -217,8 +259,6 @@ export class MapsComponent extends SessionStorage implements OnInit {
                                 this.alertStopsError();
                             }
                         }
-                    }).catch(reason => {
-                        this.alertRouteError();
                     });
                 } catch (e) {
                     this.alertRouteError();
@@ -266,11 +306,12 @@ export class MapsComponent extends SessionStorage implements OnInit {
 
     alertStopsError() {
         Swal.fire({
-            title:'Erro ao cadastrar paradas!',
-            icon:'error',
-            position:'top-end',
+            title: 'Erro ao cadastrar paradas!',
+            icon: 'error',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
 
