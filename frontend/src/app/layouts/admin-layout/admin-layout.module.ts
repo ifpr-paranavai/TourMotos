@@ -20,6 +20,7 @@ import {LoginComponent} from "../../init/login/login.component";
 import {MotorcycleComponent} from "../../init/motorcycle/motorcycle.component";
 import {LogoutComponent} from "../../init/logout/logout.component";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {NgxMaskDirective} from "ngx-mask";
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
         GoogleMapsModule,
         ComponentsModule,
         NgxChartsModule,
+        NgxMaskDirective,
     ],
     declarations: [
         DashboardComponent,
