@@ -3,8 +3,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <h4 *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por Tempo(minutos):</b></h4>
-                    <p *ngIf="routePerTime.length <= 0"><b>Cadastre uma ou mais rota para poder utilizar a dashboard.</b></p>
+                    <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por Tempo(minutos):</b></h4>
+                    <p style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length <= 0"><b>Cadastre uma ou mais rota para poder utilizar a dashboard.</b></p>
+                    <hr>
                     <ngx-charts-pie-chart
                             class=" d-flex align-items-center"
                             [view]="view"
@@ -19,8 +20,9 @@
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    <h4  *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por Distância(quilômetros):</b></h4>
-                    <p  *ngIf="routePerDistance.length <= 0"><b>Cadastre uma ou mais rota para poder utilizar a dashboard.</b></p>
+                    <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por Distância(quilômetros):</b></h4>
+                    <p style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length <= 0"><b>Cadastre uma ou mais rota para poder utilizar a dashboard.</b></p>
+                    <hr>
                     <ngx-charts-pie-chart
                             class=" d-flex align-items-center"
                             [view]="view"
@@ -33,21 +35,6 @@
                     </ngx-charts-pie-chart>
                 </div>
             </div>
-            <!--            <div class="col-md-4">-->
-            <!--                <div class="card">-->
-            <!--                    <p>aqui deve ficar o gráfico de pizza rotas </p>-->
-            <!--                    <ngx-charts-pie-chart-->
-            <!--                            [view]="view"-->
-            <!--                            scheme="picnic"-->
-            <!--                            [results]="single"-->
-            <!--                            [gradient]="gradient"-->
-            <!--                            [legend]="showLegend"-->
-            <!--                            [legendPosition]="legendPosition"-->
-            <!--                            [doughnut]="isDoughnut"-->
-            <!--                    >-->
-            <!--                    </ngx-charts-pie-chart>-->
-            <!--                </div>-->
-            <!--            </div>-->
         </div>
     </div>
 </div>
