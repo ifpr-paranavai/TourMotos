@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <h3><b>Gráfico de Rotas por Tempo(minutos):</b></h3>
+                    <h4 *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por Tempo(minutos):</b></h4>
+                    <p *ngIf="routePerTime.length <= 0"><b>Cadastre uma ou mais rota para poder utilizar a dashboard.</b></p>
                     <ngx-charts-pie-chart
                             class=" d-flex align-items-center"
                             [view]="view"
@@ -18,7 +19,8 @@
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    <h3><b>Gráfico de Rotas por Distância(quilômetros):</b></h3>
+                    <h4  *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por Distância(quilômetros):</b></h4>
+                    <p  *ngIf="routePerDistance.length <= 0"><b>Cadastre uma ou mais rota para poder utilizar a dashboard.</b></p>
                     <ngx-charts-pie-chart
                             class=" d-flex align-items-center"
                             [view]="view"
