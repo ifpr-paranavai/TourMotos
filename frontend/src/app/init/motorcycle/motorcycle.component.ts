@@ -22,14 +22,29 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
     }
 
     ngOnInit() {
-        this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
-        this.moto = {
-            id: undefined,
-            modelo: '',
-            marca: ''
+        if (this.getSession() == null || this.getSession() == undefined) {
+            this.alertErrorAuth();
+            window.location.href = 'http://localhost:4200/#';
+        } else {
+            this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
+            this.moto = {
+                id: undefined,
+                modelo: '',
+                marca: ''
 
-        };
-        this.verificaSeExisteMoto(this.motociclista);
+            };
+            this.verificaSeExisteMoto(this.motociclista);
+        }
+    }
+
+    alertErrorAuth() {
+        Swal.fire({
+            title: 'Precisa de autorização!',
+            icon: 'error',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
 
     reload() {
@@ -47,38 +62,42 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
 
     alertAddSuccess() {
         Swal.fire({
-            title:'Motocicleta cadastrada com sucesso!',
-            icon:'success',
-            position:'top-end',
+            title: 'Motocicleta cadastrada com sucesso!',
+            icon: 'success',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
     alertAddError() {
         Swal.fire({
-            title:'Erro ao cadastrar motocicleta!',
-            icon:'error',
-            position:'top-end',
+            title: 'Erro ao cadastrar motocicleta!',
+            icon: 'error',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
     alertExcludeSuccess() {
         Swal.fire({
-            title:'Motocicleta cadastrada com sucesso!',
-            icon:'success',
-            position:'top-end',
+            title: 'Motocicleta cadastrada com sucesso!',
+            icon: 'success',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
     alertExcludeError() {
         Swal.fire({
-            title:'Erro ao cadastrar motocicleta!',
-            icon:'error',
-            position:'top-end',
+            title: 'Erro ao cadastrar motocicleta!',
+            icon: 'error',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
     cadastrarMoto(moto: Moto) {

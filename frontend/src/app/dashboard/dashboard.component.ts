@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {single} from './data';
+import {NgxChartsModule} from '@swimlane/ngx-charts'
 import {SessionStorage} from "../../SessionStorage";
 import {MapsService} from "../maps/maps.service";
+import Swal from "sweetalert2";
 
 @Component({
     selector: 'app-dashboard',
@@ -19,11 +19,24 @@ export class DashboardComponent extends SessionStorage implements OnInit {
     showLegend: boolean = false;
     isDoughnut: boolean = false;
     legendPosition: string = 'below';
-    subtitulo=  '';
+    subtitulo = '';
 
     constructor(private mapsService: MapsService) {
         super();
-        Object.assign(this, {single});
+        if (this.getSession() == null || this.getSession() == undefined) {
+            this.alertError();
+            window.location.href = 'http://localhost:4200/#';
+        }
+    }
+
+    alertError() {
+        Swal.fire({
+            title: 'Precisa de autorização!',
+            icon: 'error',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
 
     async ngOnInit(): Promise<void> {
@@ -39,7 +52,7 @@ export class DashboardComponent extends SessionStorage implements OnInit {
             const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
             return {
                 name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
-                value:rota.distancia
+                value: rota.distancia
             };
         });
 

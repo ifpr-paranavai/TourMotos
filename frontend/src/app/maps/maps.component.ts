@@ -34,22 +34,37 @@ export class MapsComponent extends SessionStorage implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getCurrentLocation();
-        this.rota = {
-            id: null,
-            link: '',
-            tempoViagem: '',
-            pontoDestino: '',
-            pontoPartida: '',
-            motociclista: null,
-            distancia: null,
-        };
-        this.parada = {
-            id: null,
-            rota: null,
-            endereco: '',
-            nome: ''
+        if (this.getSession() == null || this.getSession() == undefined) {
+            this.alertError();
+            window.location.href = 'http://localhost:4200/#';
+        } else {
+            this.getCurrentLocation();
+            this.rota = {
+                id: null,
+                link: '',
+                tempoViagem: '',
+                pontoDestino: '',
+                pontoPartida: '',
+                motociclista: null,
+                distancia: null,
+            };
+            this.parada = {
+                id: null,
+                rota: null,
+                endereco: '',
+                nome: ''
+            }
         }
+    }
+
+    alertError() {
+        Swal.fire({
+            title: 'Precisa de autorização!',
+            icon: 'error',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
 
     getAddressData() {

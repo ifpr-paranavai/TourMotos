@@ -18,7 +18,22 @@ export class UserProfileComponent extends SessionStorage implements OnInit {
     }
 
     ngOnInit() {
-        this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
+        if (this.getSession() == null || this.getSession() == undefined) {
+            this.alertErrorAuth();
+            window.location.href = 'http://localhost:4200/#';
+        } else {
+            this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
+        }
+    }
+
+    alertErrorAuth() {
+        Swal.fire({
+            title: 'Precisa de autorização!',
+            icon: 'error',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
 
     buscarPerfil(id: number) {
@@ -32,20 +47,22 @@ export class UserProfileComponent extends SessionStorage implements OnInit {
 
     alertSuccess() {
         Swal.fire({
-            title:'Usuário editado com sucesso!',
-            icon:'success',
-            position:'top-end',
+            title: 'Usuário editado com sucesso!',
+            icon: 'success',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
     alertError() {
         Swal.fire({
-            title:'Erro ao editar usuário!',
-            icon:'error',
-            position:'top-end',
+            title: 'Erro ao editar usuário!',
+            icon: 'error',
+            position: 'top-end',
             showConfirmButton: false,
-            timer: 1000});
+            timer: 1000
+        });
     }
 
     editar(motociclista: Motociclista) {
