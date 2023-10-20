@@ -4,8 +4,8 @@ Este documento é um guia para ajudá-lo a iniciar o projeto. Ele fornecerá ins
 </p>
 
 # Diagramas
-<img src="Diagrama de Caso de Uso" alt="Diagrama de Caso de Uso">
-<img src="Diagrama de Classes" alt="Diagrama de Classes.png">
+<img src="figures/Diagrama de Caso de Uso" alt="Diagrama de Caso de Uso">
+<img src="figures/Diagrama de Classes" alt="Diagrama de Classes.png">
 
 # Pré-requisitos
 <p>
