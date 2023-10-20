@@ -3,6 +3,10 @@
 Este documento é um guia para ajudá-lo a iniciar o projeto. Ele fornecerá instruções passo a passo sobre como configurar seu ambiente de desenvolvimento.
 </p>
 
+# Diagramas
+![Diagrama de Caso de Uso](figures/Diagrama de Caso de Uso.png)
+![Diagrama de Classes](figures/Diagrama de Classes.png)
+
 # Pré-requisitos
 <p>
 Antes de começar, certifique-se de ter o seguinte instalado em seu sistema:
