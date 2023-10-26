@@ -77,7 +77,6 @@ export class MapsComponent extends SessionStorage implements OnInit {
                         this.startPoint = this.addressData[i].formatted_address
                     }
                 }
-                this.initMap();
             }
         });
     }
@@ -122,7 +121,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
         const request = {
             origin: this.startPoint,
             destination: this.endPoint,
-            travelMode: google.maps.TravelMode.DRIVING,
+            travelMode: 'TWO_WHEELER',
             drivingOptions: {
                 departureTime: new Date(Date.now()),
                 trafficModel: google.maps.TrafficModel.OPTIMISTIC
