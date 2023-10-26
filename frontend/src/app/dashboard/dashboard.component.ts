@@ -16,8 +16,8 @@ export class DashboardComponent extends SessionStorage implements OnInit {
 
     // options
     gradient: boolean = true;
-    showLegend: boolean = false;
-    isDoughnut: boolean = false;
+    showLegend: boolean = true;
+    isDoughnut: boolean = true;
     legendPosition: string = 'below';
     subtitulo = '';
 
