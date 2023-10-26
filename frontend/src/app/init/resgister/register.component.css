@@ -8,3 +8,8 @@
 .register, .login {
     margin-left: 15px
 }
+
+::placeholder {
+    color: black;
+    opacity: 1;
+}

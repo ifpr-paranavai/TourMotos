@@ -1,5 +1,6 @@
-#label{
+label{
     color: black;
+    font-size: 15px;
 }
 .input{
     margin-left: 5px;

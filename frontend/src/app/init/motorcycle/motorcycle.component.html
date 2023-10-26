@@ -10,13 +10,13 @@
                         <form action="/motorcycle" method="post">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input matInput type="text" name="modelo" placeholder="Modelo"
+                                    <input matInput type="text" name="modelo" placeholder="Model"
                                            [(ngModel)]="moto.modelo" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input matInput type="text" name="marca" placeholder="Marca"
+                                    <input matInput type="text" name="marca" placeholder="Brand"
                                            [(ngModel)]="moto.marca" class="form-control">
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                         <!-- Lista de motos -->
                         <div class="row list">
                             <div class="col-12">
-                                <h4>Lista de Motos</h4>
+                                <h4>Motocicleta Atual</h4>
                                 <ul>
                                     <li *ngFor="let moto of motos; let i = index">
                                         <div class="row">
