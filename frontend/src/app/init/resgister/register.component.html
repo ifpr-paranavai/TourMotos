@@ -10,25 +10,29 @@
                         <form action="/register" method="post">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" name="name" placeholder="Name"
+                                    <label>Nome:</label>
+                                    <input type="text" name="name"
                                            [(ngModel)]="motociclista.nome"
                                            class="form-control">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" name="cpf" placeholder="CPF"
+                                    <label>CPF:</label>
+                                    <input type="text" name="cpf"
                                            [(ngModel)]="motociclista.cpf"
                                            class="form-control" mask="000.000.000-00">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="email" name="email" placeholder="Email"
+                                    <label>E-mail:</label>
+                                    <input type="email" name="email"
                                            [(ngModel)]="motociclista.email" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="password" name="password" placeholder="Password"
+                                    <label>Senha:</label>
+                                    <input type="password" name="password"
                                            [(ngModel)]="motociclista.senha" class="form-control">
                                 </div>
                             </div>

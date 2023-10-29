@@ -36,15 +36,6 @@ export class UserProfileComponent extends SessionStorage implements OnInit {
         });
     }
 
-    buscarPerfil(id: number) {
-        this.userProfileService.buscaMotociclista(id);
-
-    }
-
-    cadastrar(motociclista: Motociclista) {
-        this.userProfileService.cadastrarMotociclista(motociclista);
-    }
-
     alertSuccess() {
         Swal.fire({
             title: 'Usuário editado com sucesso!',

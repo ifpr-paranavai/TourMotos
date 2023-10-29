@@ -7,42 +7,47 @@
                         <h4 class="card-title">Editar Perfil</h4>
                     </div>
                     <div class="card-body">
-                            <div class="row d-flex justify-content-between">
+                        <form>
+                            <div class="row">
                                 <div class="col">
-                                    <label >Nome:</label>
-                                    <input matInput
-                                           type="text"
-                                           class="input"
-                                           placeholder="Digite seu nome"
-                                           [(ngModel)]="motociclista.nome">
-                                </div>
-
-
-                                <div class="col">
-                                    <label >E-mail:</label>
-                                    <input matInput
-                                           type="text"
-                                           class="input"
-                                           placeholder="Digite seu e-mail"
-                                           [(ngModel)]="motociclista.email">
-
+                                    <div class="form-group">
+                                        <label for="nome">Nome:</label>
+                                        <input matInput
+                                               type="text"
+                                               class="form-control"
+                                               id="nome"
+                                               placeholder="Digite seu nome"
+                                               [value]="motociclista.nome">
+                                    </div>
                                 </div>
 
                                 <div class="col">
-                                    <label>CPF:</label>
-                                    <input matInput
-                                           lass="input"
-                                           placeholder=""
-                                           [(ngModel)] ="motociclista.cpf" mask="000.000.000-00" disabled>
+                                    <div class="form-group">
+                                        <label for="email">E-mail:</label>
+                                        <input matInput
+                                               type="text"
+                                               class="form-control"
+                                               id="email"
+                                               placeholder="Digite seu e-mail"
+                                               [value]="motociclista.email">
+                                    </div>
                                 </div>
 
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cpf">CPF:</label>
+                                        <input matInput
+                                               type="text"
+                                               class="form-control"
+                                               id="cpf"
+                                               placeholder=""
+                                               [(ngModel)]="motociclista.cpf" mask="000.000.000-00" disabled>
+                                    </div>
+                                </div>
                             </div>
 
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                                    id="updateProfileBtn" (click)="editar(this.motociclista)">Editar
-                            </button>
-                            <div class="clearfix"></div>
-
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" id="updateProfileBtn" (click)="editar(this.motociclista)">Editar</button>
+                        </form>
                     </div>
                 </div>
             </div>

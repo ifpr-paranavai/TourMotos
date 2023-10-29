@@ -10,13 +10,15 @@
                         <form action="/motorcycle" method="post">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input matInput type="text" name="modelo" placeholder="Modelo"
+                                    <label>Modelo:</label>
+                                    <input matInput type="text" name="modelo"
                                            [(ngModel)]="moto.modelo" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input matInput type="text" name="marca" placeholder="Marca"
+                                    <label>Marca:</label>
+                                    <input matInput type="text" name="marca"
                                            [(ngModel)]="moto.marca" class="form-control">
                                 </div>
                             </div>
