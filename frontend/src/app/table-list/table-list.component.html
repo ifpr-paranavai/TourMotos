@@ -10,14 +10,19 @@
                       <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
                           <table class="table">
                               <thead class="text-primary">
-                              <th>Link da Rota</th>
+                              <th>Rota</th>
                               <th>Distância</th>
                               <th>Tempo</th>
                               <th>Excluir</th>
                               </thead>
                               <tbody>
                               <tr *ngFor="let rota of rotas">
-                                  <td><a [href]="rota.link" target="_blank">{{ rota.link }}</a></td>
+                                  <td>
+                                      <a [href]="rota.link" target="_blank">
+                                          {{ rota.pontoPartida }} até {{ rota.pontoDestino }}
+                                      </a>
+                                      <div class="tooltip">Clique para obter mais detalhes</div>
+                                  </td>
                                   <td>{{ rota.distancia }} km</td>
                                   <td>{{ rota.tempoViagem }} min</td>
                                   <td>

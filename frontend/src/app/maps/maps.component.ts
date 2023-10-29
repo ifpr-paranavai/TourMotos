@@ -38,6 +38,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
             this.alertError();
             window.location.href = 'http://localhost:4200/#';
         } else {
+            this.alertInfo();
             this.getCurrentLocation();
             this.rota = {
                 id: null,
@@ -55,6 +56,16 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 nome: ''
             }
         }
+    }
+
+    alertInfo() {
+        Swal.fire({
+            text: 'Rotas muito distantes podem não ser reconhecidas.',
+            icon: 'info',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
     }
 
     alertError() {
@@ -331,7 +342,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
 
     criarObjetos(stringSeparadaPorVirgulas) {
         if (stringSeparadaPorVirgulas) {
-            const valores = stringSeparadaPorVirgulas.split(',');
+            const valores = stringSeparadaPorVirgulas.split('/');
             this.stopsListBack = valores.map((valor) => {
                 return valor;
             });

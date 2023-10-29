@@ -39,31 +39,46 @@ export class DashboardComponent extends SessionStorage implements OnInit {
         });
     }
 
+    alertInfo() {
+        Swal.fire({
+            title: 'Cadastre uma ou mais rotas para poder utilizar a dashboard.',
+            icon: 'info',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+        }).then(value => {
+            window.location.href = 'http://localhost:4200/#/maps';
+        });
+    }
+
     async ngOnInit(): Promise<void> {
         const dadosRotas = await this.mapsService.buscaPorMotociclista(this.getId());
+        if (dadosRotas.length <= 0) {
+            this.alertInfo();
+        } else {
+            // Usar Promise.all para buscar todas as paradas assincronamente
+            const paradasPromises = dadosRotas.map(rota => this.mapsService.buscaParadaPorRota(rota.id));
+            const paradasResults = await Promise.all(paradasPromises);
 
-        // Usar Promise.all para buscar todas as paradas assincronamente
-        const paradasPromises = dadosRotas.map(rota => this.mapsService.buscaParadaPorRota(rota.id));
-        const paradasResults = await Promise.all(paradasPromises);
+            // Mapear os valores de 'dadosRotas' e 'paradasResults' para 'routePerTime'
+            this.routePerTime = dadosRotas.map((rota, index) => {
+                const paradas = paradasResults[index];
+                const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
+                return {
+                    name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
+                    value: rota.tempoViagem
+                };
+            });
 
-        // Mapear os valores de 'dadosRotas' e 'paradasResults' para 'routePerTime'
-        this.routePerTime = dadosRotas.map((rota, index) => {
-            const paradas = paradasResults[index];
-            const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
-            return {
-                name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
-                value: rota.tempoViagem
-            };
-        });
-
-        this.routePerDistance = dadosRotas.map((rota, index) => {
-            const paradas = paradasResults[index];
-            const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
-            return {
-                name: `${rota.pontoPartida}  -> ${paradaNames} -> ${rota.pontoDestino}`,
-                value: rota.distancia
-            };
-        });
+            this.routePerDistance = dadosRotas.map((rota, index) => {
+                const paradas = paradasResults[index];
+                const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
+                return {
+                    name: `${rota.pontoPartida}  -> ${paradaNames} -> ${rota.pontoDestino}`,
+                    value: rota.distancia
+                };
+            });
+        }
     }
 
 }

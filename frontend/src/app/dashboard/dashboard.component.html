@@ -4,7 +4,6 @@
             <div class="col-md-6">
                 <div class="card">
                     <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por Tempo(minutos):</b></h4>
-                    <p style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length <= 0"><b>Cadastre uma ou mais rotas para poder utilizar a dashboard.</b></p>
                     <hr>
                     <ngx-charts-pie-chart
                             class=" d-flex align-items-center"
@@ -22,7 +21,6 @@
             <div class="col-md-6">
                 <div class="card">
                     <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por Distância(quilômetros):</b></h4>
-                    <p style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length <= 0"><b>Cadastre uma ou mais rotas para poder utilizar a dashboard.</b></p>
                     <hr>
                     <ngx-charts-pie-chart
                             class=" d-flex align-items-center"

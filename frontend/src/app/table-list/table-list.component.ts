@@ -20,10 +20,21 @@ export class TableListComponent extends SessionStorage implements OnInit {
             this.alertError();
             window.location.href = 'http://localhost:4200/#';
         } else {
+            this.alertClick();
             this.mapsService.buscaPorMotociclista(this.getId()).then(dados => {
                 this.rotas = dados;
             });
         }
+    }
+
+    alertClick() {
+        Swal.fire({
+            text: 'É possível clicar nas rotas para abrir em outra janela e compartilhá-las!',
+            icon: "info",
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
     }
 
     alertError() {
