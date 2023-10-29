@@ -132,7 +132,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
         const request = {
             origin: this.startPoint,
             destination: this.endPoint,
-            travelMode: 'TWO_WHEELER',
+            travelMode: "DRIVING",
             drivingOptions: {
                 departureTime: new Date(Date.now()),
                 trafficModel: google.maps.TrafficModel.OPTIMISTIC

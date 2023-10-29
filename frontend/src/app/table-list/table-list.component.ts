@@ -33,7 +33,7 @@ export class TableListComponent extends SessionStorage implements OnInit {
             icon: "info",
             position: 'top-end',
             showConfirmButton: false,
-            timer: 5000
+            timer: 3000
         });
     }
 
