@@ -28,6 +28,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
     link: string;
     rota: Rota;
     parada: Parada;
+    mapsLink="";
 
     constructor(private http: HttpClient, private mapsService: MapsService) {
         super();
@@ -159,10 +160,11 @@ export class MapsComponent extends SessionStorage implements OnInit {
 
                 // Adicione os pontos de parada à URL com "|"
                 const waypointsString = this.stopsList.map(waypoint => waypoint.location).join('/');
-                const mapsLink = `https://www.google.com/maps/dir/${startLatLng}/${waypointsString}/${endLatLng}`;
-
-                // Exibir o link no console
-                console.log('Link para a rota no Google Maps:', mapsLink);
+                if(waypointsString.length > 0) {
+                    this.mapsLink = `https://www.google.com/maps/dir/${startLatLng}/${waypointsString}/${endLatLng}`;
+                }else{
+                    this.mapsLink = `https://www.google.com/maps/dir/${startLatLng}/${endLatLng}`;
+                }
 
                 function convertDaysToMinutes(value: string): number {
                     const daysMatch = value.match(/(\d+)\s*dia(s)?/);
@@ -259,7 +261,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
                 // Somando os valores da duração
                 const totalDuration = durationValues.reduce((acc, value) => acc + value, 0);
 
-                this.rota.link = mapsLink;
+                this.rota.link = this.mapsLink;
                 this.rota.distancia = totalDistance;
                 this.rota.motociclista = this.getSession();
                 this.rota.pontoPartida = this.startPoint;
