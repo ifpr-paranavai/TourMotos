@@ -1,15 +1,15 @@
 .register-alternativo, .login-alternativo {
-    color: red;
-    padding-top: 15px;
-    background-color: transparent !important;
-    border: none !important;
+  color: red;
+  padding-top: 15px;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .register, .login {
-    margin-left: 15px
+  margin-left: 15px
 }
 
 label {
-    color: black;
-    opacity: 1;
+  color: black;
+  opacity: 1;
 }

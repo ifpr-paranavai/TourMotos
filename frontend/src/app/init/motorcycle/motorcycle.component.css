@@ -1,24 +1,24 @@
 .register-alternativo, .login-alternativo {
-    color: red;
-    padding-top: 15px;
-    background-color: transparent!important;
-    border: none!important;
+  color: red;
+  padding-top: 15px;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .register, .login {
-    margin-left: 15px
+  margin-left: 15px
 }
 
-.list{
-    margin-top: 50px;
+.list {
+  margin-top: 50px;
 }
 
-.btn-delete{
-     border: none;
-     border-radius: 5px;
- }
+.btn-delete {
+  border: none;
+  border-radius: 5px;
+}
 
 label {
-    color: black;
-    opacity: 1;
+  color: black;
+  opacity: 1;
 }

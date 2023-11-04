@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SessionStorage} from "../../../SessionStorage";
 
 @Component({
-    selector: 'app-logout',
-    templateUrl: './logout.component.html',
+  selector: 'app-logout',
+  templateUrl: './logout.component.html',
 })
 
-export class LogoutComponent extends SessionStorage implements OnInit{
+export class LogoutComponent extends SessionStorage implements OnInit {
 
-    urlNewSession: string = 'http://localhost:4200/#/login';
+  urlNewSession: string = 'http://localhost:4200/#/login';
 
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    ngOnInit(): void {
-        this.newSession();
-        window.location.replace(this.urlNewSession);
-    }
+  ngOnInit(): void {
+    this.newSession();
+    window.location.replace(this.urlNewSession);
+  }
 }

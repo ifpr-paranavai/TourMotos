@@ -1,41 +1,43 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por Tempo(minutos):</b></h4>
-                    <hr>
-                    <ngx-charts-pie-chart
-                            class=" d-flex align-items-center"
-                            [view]="view"
-                            scheme="picnic"
-                            legendTitle="Rotas"
-                            [results]="routePerTime"
-                            [gradient]="gradient"
-                            [legend]="showLegend"
-                            [doughnut]="isDoughnut"
-                    >
-                    </ngx-charts-pie-chart>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por Distância(quilômetros):</b></h4>
-                    <hr>
-                    <ngx-charts-pie-chart
-                            class=" d-flex align-items-center"
-                            [view]="view"
-                            scheme="picnic"
-                            legendTitle="Rotas"
-                            [results]="routePerDistance"
-                            [gradient]="gradient"
-                            [legend]="showLegend"
-                            [doughnut]="isDoughnut"
-                    >
-                    </ngx-charts-pie-chart>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por
+            Tempo(minutos):</b></h4>
+          <hr>
+          <ngx-charts-pie-chart
+            class=" d-flex align-items-center"
+            [view]="view"
+            scheme="picnic"
+            legendTitle="Rotas"
+            [results]="routePerTime"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [doughnut]="isDoughnut"
+          >
+          </ngx-charts-pie-chart>
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por
+            Distância(quilômetros):</b></h4>
+          <hr>
+          <ngx-charts-pie-chart
+            class=" d-flex align-items-center"
+            [view]="view"
+            scheme="picnic"
+            legendTitle="Rotas"
+            [results]="routePerDistance"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [doughnut]="isDoughnut"
+          >
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>

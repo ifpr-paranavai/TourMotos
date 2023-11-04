@@ -1,10 +1,11 @@
-label{
-    color: black;
-    font-size: 15px;
+label {
+  color: black;
+  font-size: 15px;
 }
-.input{
-    margin-left: 5px;
-    border: none;
-    border-bottom: solid 1px;
-    width: 200px;
+
+.input {
+  margin-left: 5px;
+  border: none;
+  border-bottom: solid 1px;
+  width: 200px;
 }

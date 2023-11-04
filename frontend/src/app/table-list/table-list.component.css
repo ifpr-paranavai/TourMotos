@@ -1,21 +1,22 @@
 /* Defina uma altura máxima para a tabela para que ela role na vertical */
 .table-responsive {
-    max-height: 300px; /* Defina a altura máxima desejada */
-    overflow-y: auto; /* Adicione uma barra de rolagem na vertical se necessário */
+  max-height: 300px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Adicione uma barra de rolagem na vertical se necessário */
 }
 
 /* Faça com que o cabeçalho da tabela seja fixo */
 .table thead th {
-    position: sticky;
-    top: 0;
-    background-color: #fff; /* Defina a cor de fundo desejada para o cabeçalho */
-    z-index: 1; /* Certifique-se de que o cabeçalho fique acima do conteúdo rolável */
-}
-.btn-delete{
-    border: none;
-    border-radius: 5px;
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Defina a cor de fundo desejada para o cabeçalho */
+  z-index: 1; /* Certifique-se de que o cabeçalho fique acima do conteúdo rolável */
 }
 
-.a{
-    cursor: pointer;
+.btn-delete {
+  border: none;
+  border-radius: 5px;
+}
+
+.a {
+  cursor: pointer;
 }
