@@ -109,6 +109,7 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
           this.userProfileService.editarMotociclista(this.motociclista).then(value1 => {
             this.session(value1.data);
             this.motociclista = JSON.parse(sessionStorage.getItem('motociclista'));
+            this.motos.push(this.motociclista.moto);
           }).catch(reason => {
             this.alertAddError();
           });
