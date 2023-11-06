@@ -64,19 +64,33 @@ export class DashboardComponent extends SessionStorage implements OnInit {
       this.routePerTime = dadosRotas.map((rota, index) => {
         const paradas = paradasResults[index];
         const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
-        return {
-          name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
-          value: rota.tempoViagem
-        };
+        if (paradas.length > 0) {
+          return {
+            name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
+            value: rota.tempoViagem
+          };
+        }else{
+          return {
+            name: `${rota.pontoPartida} -> ${rota.pontoDestino}`,
+            value: rota.tempoViagem
+          };
+        }
       });
 
       this.routePerDistance = dadosRotas.map((rota, index) => {
         const paradas = paradasResults[index];
         const paradaNames = paradas.map(parada => parada.nome).join(' -> ');
-        return {
-          name: `${rota.pontoPartida}  -> ${paradaNames} -> ${rota.pontoDestino}`,
-          value: rota.distancia
-        };
+        if (paradas.length > 0) {
+          return {
+            name: `${rota.pontoPartida} -> ${paradaNames} -> ${rota.pontoDestino}`,
+            value: rota.distancia
+          };
+        }else{
+          return {
+            name: `${rota.pontoPartida} -> ${rota.pontoDestino}`,
+            value: rota.distancia
+          };
+        }
       });
     }
   }

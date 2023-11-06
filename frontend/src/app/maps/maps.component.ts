@@ -342,9 +342,9 @@ export class MapsComponent extends SessionStorage implements OnInit {
   }
 
 
-  criarObjetos(stringSeparadaPorVirgulas) {
-    if (stringSeparadaPorVirgulas) {
-      const valores = stringSeparadaPorVirgulas.split('/');
+  criarObjetos(stringSeparadaPorBarras) {
+    if (stringSeparadaPorBarras) {
+      const valores = stringSeparadaPorBarras.split('/');
       this.stopsListBack = valores.map((valor) => {
         return valor;
       });
