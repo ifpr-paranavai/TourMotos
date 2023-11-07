@@ -3,8 +3,10 @@
     <div class="row">
       <div class="col-md-6">
         <div class="card">
-          <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por
-            Tempo(minutos):</b></h4>
+          <div class="card-header card-header-danger">
+            <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerTime.length > 0"><b>Gráfico de Rotas por
+              Tempo(minutos):</b></h4>
+          </div>
           <hr>
           <ngx-charts-pie-chart
             class=" d-flex align-items-center"
@@ -21,8 +23,10 @@
       </div>
       <div class="col-md-6">
         <div class="card">
-          <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por
-            Distância(quilômetros):</b></h4>
+          <div class="card-header card-header-danger">
+            <h4 style="margin-left: 2pc; margin-top: 1pc" *ngIf="routePerDistance.length > 0"><b>Gráfico de Rotas por
+              Distância(quilômetros):</b></h4>
+          </div>
           <hr>
           <ngx-charts-pie-chart
             class=" d-flex align-items-center"

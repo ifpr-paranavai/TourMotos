@@ -1,29 +1,34 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="form-container">
-        <h3>Planejamento de Rotas</h3>
-        <form (ngSubmit)="initMap()">
-          <div class="form-group">
-            <label for="start-point">Ponto de partida:</label>
-            <input type="text" id="start-point" name="startPoint" [(ngModel)]="startPoint" required>
-          </div>
-
-          <div class="form-group">
-            <label for="end-point">Ponto de chegada:</label>
-            <input type="text" id="end-point" name="endPoint" [(ngModel)]="endPoint" required>
-          </div>
-
-          <div class="form-group">
-            <label for="stops">Paradas:</label>
-            <input type="text" id="stops" name="stops" [(ngModel)]="stops">
-            <small>Insira pelo menos uma parada, se tiver mais separe por barra ( / )</small>
-          </div>
-
-          <button type="submit">Enviar</button>
-        </form>
+    <div class="card" style="margin-bottom: -5pc">
+      <div class="card-header card-header-danger">
+        <h4 class="card-title">Planejamento de Rotas</h4>
       </div>
-      <div id="map">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6" id="form">
+            <form (ngSubmit)="initMap()">
+              <div class="form-group">
+                <label for="start-point">Ponto de partida:</label>
+                <input type="text" id="start-point" name="startPoint" [(ngModel)]="startPoint" required>
+              </div>
+              <div class="form-group">
+                <label for="end-point">Ponto de chegada:</label>
+                <input type="text" id="end-point" name="endPoint" [(ngModel)]="endPoint" required>
+              </div>
+              <div class="form-group">
+                <label for="stops">Paradas:</label>
+                <input type="text" id="stops" name="stops" [(ngModel)]="stops">
+                <small>Insira pelo menos uma parada, se tiver mais separe por barra ( / )</small>
+              </div>
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+          <div class="col-6">
+            <div id="map">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

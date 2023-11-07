@@ -73,6 +73,10 @@ button[type="submit"]:hover {
   padding-left: 15px;
 }
 
+#form{
+  margin-top: 5pc;
+}
+
 @media (max-width: 768px) {
   .form-container, #map {
     flex: 0 0 100%; /* Em telas menores, ocupam 100% da largura */
