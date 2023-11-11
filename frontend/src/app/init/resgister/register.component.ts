@@ -67,6 +67,8 @@ export class RegisterComponent implements OnInit {
         }).catch(reason => {
           this.alertError();
         });
+      }else{
+        this.alertError();
       }
     } catch (e) {
       this.alertError();
