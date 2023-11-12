@@ -4,6 +4,7 @@ class Rota{
     pontoDestino: string;
     distancia: number;
     tempoViagem: string;
+    rotaCompleta: string;
     link: string;
     motociclista: Motociclista;
 }

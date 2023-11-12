@@ -19,9 +19,8 @@
                 <tr *ngFor="let rota of rotas">
                   <td>
                     <a [href]="rota.link" target="_blank">
-                      {{ rota.pontoPartida }} até {{ rota.pontoDestino }}
+                      {{ rota.rotaCompleta }}
                     </a>
-                    <div class="tooltip">Clique para obter mais detalhes</div>
                   </td>
                   <td>{{ rota.distancia }} km</td>
                   <td>{{ rota.tempoViagem }} min</td>

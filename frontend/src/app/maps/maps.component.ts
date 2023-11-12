@@ -29,6 +29,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
   rota: Rota;
   parada: Parada;
   mapsLink = "";
+  rotaCompleta = "";
 
   constructor(private http: HttpClient, private mapsService: MapsService) {
     super();
@@ -49,6 +50,7 @@ export class MapsComponent extends SessionStorage implements OnInit {
         pontoPartida: '',
         motociclista: null,
         distancia: null,
+        rotaCompleta:'',
       };
       this.parada = {
         id: null,
@@ -261,12 +263,20 @@ export class MapsComponent extends SessionStorage implements OnInit {
         // Somando os valores da duração
         const totalDuration = durationValues.reduce((acc, value) => acc + value, 0);
 
+        const listaParada = this.stopsList.map(waypoint => waypoint.location.replaceAll("+","")).join(',');
+        if (listaParada.length > 0) {
+          this.rotaCompleta = `${this.startPoint},${listaParada},${this.endPoint}`;
+        } else {
+          this.rotaCompleta = `${this.startPoint},${this.endPoint}`;
+        }
+
         this.rota.link = this.mapsLink;
         this.rota.distancia = totalDistance;
         this.rota.motociclista = this.getSession();
         this.rota.pontoPartida = this.startPoint;
         this.rota.pontoDestino = this.endPoint;
         this.rota.tempoViagem = totalDuration;
+        this.rota.rotaCompleta = this.rotaCompleta;
 
         try {
           this.mapsService.cadastrarRota(this.rota).then(value => {

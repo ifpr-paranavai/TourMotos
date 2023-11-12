@@ -36,6 +36,9 @@ public class Rota implements Serializable {
     @Column(name = "tempoViagem")
     private String tempoViagem;
 
+    @Column(name = "rotaCompleta")
+    private String rotaCompleta;
+
     @Column(name = "link")
     private String link;
 
