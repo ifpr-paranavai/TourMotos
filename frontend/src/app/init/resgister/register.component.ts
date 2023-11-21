@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   motociclista: Motociclista;
   url: string;
-  regexEmail: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;
+  regexEmail: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
 
   constructor(private registerService: RegisterService) {
   }
@@ -113,7 +113,7 @@ export class RegisterComponent implements OnInit {
                   this.loginCadastro();
                 }
               }).catch(reason => {
-                this.alertError();
+                this.alertError('Usuário já cadastrado, e-mail e CPF são registros únicos!');
               });
             } else {
               this.alertError('A senha deve ter no mínimo 6 caracteres!');

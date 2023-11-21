@@ -37,14 +37,24 @@ export class LoginComponent extends SessionStorage {
     );
   }
 
-  alertError() {
-    Swal.fire({
-      title: 'Erro ao realizar login!',
-      icon: 'error',
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 1000
-    });
+  alertError(title?: string) {
+    if(!title) {
+      Swal.fire({
+        title: 'Erro ao realizar login!',
+        icon: 'error',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000
+      });
+    }else{
+      Swal.fire({
+        title: `${title}`,
+        icon: 'error',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000
+      });
+    }
   }
 
   loginCadastro(): void {
@@ -64,7 +74,8 @@ export class LoginComponent extends SessionStorage {
         ).catch(reason => {
           this.alertError();
         });
-
+      }else{
+        this.alertError('Preencha os campos corretamente!');
       }
     } catch (e) {
       this.alertError();

@@ -70,14 +70,24 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
     });
   }
 
-  alertAddError() {
-    Swal.fire({
-      title: 'Erro ao cadastrar motocicleta!',
-      icon: 'error',
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 1000
-    });
+  alertAddError(title?: string) {
+    if (!title) {
+      Swal.fire({
+        title: 'Erro ao cadastrar motocicleta!',
+        icon: 'error',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000
+      });
+    } else {
+      Swal.fire({
+        title: `${title}`,
+        icon: 'error',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000
+      });
+    }
   }
 
   alertExcludeSuccess() {
@@ -92,7 +102,7 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
 
   alertExcludeError() {
     Swal.fire({
-      title: 'Erro ao cadastrar motocicleta!',
+      title: 'Erro ao excluir motocicleta!',
       icon: 'error',
       position: 'top-end',
       showConfirmButton: false,
@@ -116,6 +126,8 @@ export class MotorcycleComponent extends SessionStorage implements OnInit {
         }).catch(reason => {
           this.alertAddError();
         });
+      } else {
+        this.alertAddError('Preencha os campos corretamente!');
       }
     } catch (e) {
       this.alertAddError();
