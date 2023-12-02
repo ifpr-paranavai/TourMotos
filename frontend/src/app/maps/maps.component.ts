@@ -125,11 +125,11 @@ export class MapsComponent extends SessionStorage implements OnInit {
 
     this.directionsRenderer.setMap(this.map);
 
-    if (this.stops == undefined || this.stops == '') {
+    if (this.stopsList == undefined || this.stopsList.length <= 0) {
       this.stops = null;
       this.stopsList = [];
     } else {
-      this.submitForm(this.stops);
+      this.submitForm(this.stopsList);
     }
 
     const request = {
@@ -350,26 +350,21 @@ export class MapsComponent extends SessionStorage implements OnInit {
       timer: 1000
     });
   }
-
-
-  criarObjetos(stringSeparadaPorBarras) {
-    if (stringSeparadaPorBarras) {
-      const valores = stringSeparadaPorBarras.split('/');
-      this.stopsListBack = valores.map((valor) => {
-        return valor;
-      });
-      this.stopsList = valores.map((valor) => {
-        // Substitua espaços por '+'
-        const location = valor.trim().replace(/\s+/g, '+');
-        return {location};
-      });
-    }
+  addStop() {
+    this.stopsList.push({ location: '' });
   }
 
-  submitForm(stops: string) {
+  removeStop(index: number) {
+    this.stopsList.splice(index, 1);
+  }
+
+  submitForm(stopsList: any[]) {
     if (this.startPoint) {
       if (this.endPoint) {
-        this.criarObjetos(stops);
+        if (stopsList && stopsList.length > 0) {
+          this.stopsList = stopsList;
+          this.stopsListBack = stopsList.map(stop => stop.location.replaceAll("+",""));
+        }
       } else {
         this.endPoint = '';
       }

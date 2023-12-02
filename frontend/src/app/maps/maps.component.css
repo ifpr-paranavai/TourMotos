@@ -1,6 +1,4 @@
-::ng-deep .main-content {
-  overflow: hidden !important;
-}
+
 
 ::ng-deep .main-panel .main-content {
   padding: 0 15px;
@@ -38,6 +36,32 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #da1405;
+}
+
+button[type="button"] {
+  font-size: 10px;
+  background-color: #e53737;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #da1405;
+}
+
+.add-stop-button,
+.remove-stop-button {
+  cursor: pointer;
+  align-content: center;
+  vertical-align: middle;
+}
+
+.add-stop-button i,
+.remove-stop-button i {
+  font-size: 20px;
+  margin-top: 5px;
 }
 
 .main-content {
