@@ -5,9 +5,9 @@ Este documento é um guia para ajudá-lo a iniciar o projeto. Ele fornecerá ins
 
 # Diagramas
 <h3>Diagrama de Caso de Uso</h3>
-<img src="figures/Diagrama_de_Caso_de_Uso.png" alt="Diagrama de Caso de Uso">
+<img src="figures/Diagrama de Caso de Uso.png" alt="Diagrama de Caso de Uso">
 <h3>Diagrama de Classes</h3>
-<img src="figures/Diagrama_de_Classes.png" alt="Diagrama de Classes">
+<img src="figures/Diagrama de Classes.png" alt="Diagrama de Classes">
 
 # Pré-requisitos
 <p>
